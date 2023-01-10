@@ -1,5 +1,16 @@
 import { Component } from '@angular/core';
 
+interface AsideItem {
+  name: string;
+  isOpen: boolean;
+  childs: ChildAsideItem[];
+}
+
+interface ChildAsideItem {
+  name: string;
+  url: string;
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,4 +18,19 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'rxjs-app';
+
+  showAside = false;
+
+  public asideData: AsideItem[] = [
+    {
+      name: 'Basic observable',
+      isOpen: false,
+      childs: [
+        {
+          name: 'Observable',
+          url: '/observable'
+        },
+      ]
+    }
+  ]
 }
