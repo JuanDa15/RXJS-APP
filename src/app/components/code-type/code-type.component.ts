@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
       <ng-content></ng-content>
     </span>
   `,
-  styleUrls: ['./code-type.component.scss']
+  styles: [``]
 })
 export class CodeTypeComponent implements OnInit {
 
