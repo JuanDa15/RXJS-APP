@@ -1,21 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Observer, Observable } from 'rxjs';
 @Component({
   selector: 'app-observable',
   templateUrl: './observable.component.html',
-  styleUrls: ['./observable.component.scss']
+  styles: [``]
 })
 export class ObservableComponent {
-  public isCompleted: boolean = false;
-  public statuses: string[] = [];
-  public observer: Observer<string> = {
-    next: (resp) => {
-      this.statuses.push(resp);
-      console.log('pushe');
-    },
-    error: (err) => console.log(err),
-    complete: () => this.isCompleted = true
-  }
+  public isCompleted: boolean;
+  public statuses: string[];
+  public observer: Observer<string>;
 
   public obs$ = new Observable<string>( subscriber => {
     let interval: any;
@@ -30,18 +23,21 @@ export class ObservableComponent {
         subscriber.complete();
       }
     }, 3000);
-
-
   });
 
   constructor(){
+    this.isCompleted = false;
+    this.statuses = [];
+    this.observer = {
+      next: (resp) => this.statuses.push(resp),
+      error: (err) => console.log(err),
+      complete: () => this.isCompleted = true
+    }
   }
-  
-  startStream() {
+
+  public startStream() {
     this.isCompleted = false;
     this.statuses = [];
     this.obs$.subscribe(this.observer)
-    
   }
-
 }

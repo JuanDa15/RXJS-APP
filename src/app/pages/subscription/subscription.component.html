@@ -1,0 +1,109 @@
+<section class="w-full">
+  <h1 class="text-4xl mb-2 break-all">SUBSCRIPCIÓN & CANCELAR SUBSCRIPCIÓN</h1>
+  <hr class="mb-4">
+  <div class="flex flex-col gap-4">
+    <article class="p-4 rounded-md shadow shadow-slate-700">
+      <p class="mb-4 text-justify">Como se sabe los <span class="font-bold text-indigo-700">observables</span> son objetos que pueden manipular stream de datos. Pero para acceder a dicho stream de datos se tiene que hacer uso de una subscripción a dicho stream, para poder estar escuchando constantemente las actualizaciones de los datos que emite el observador.</p>
+  
+      <p class="mb-4 text-justify">Cabe resaltar que la mala implementación de los observadores puede llevar a que haya fugas de memoria, y en caso de hacer uso de multiples observadores simultaneamente, según que proceso puede generar perdidas de rendimiento dentro de la aplicación, ya que cada instancia del observador que tengamos va tener un proceso paralelo pendiente de un stream de datos constantemente.
+      </p>
+  
+      <p class="text-justify">Por ende asi como existe un metodo de subscripción a un observador, tambien se debe cancelar esta subscripción una ves ya no se necesita estar al pendiente del stream de datos o que ya no se tiene que renderizar el componente en el cual esta implementado dicho observador.</p>
+    </article>
+    <div class="grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-2 gap-4">
+      <article class="p-4 rounded-md shadow shadow-slate-700 lg:row-span-full">
+        <h2 class="text-2xl text-indigo-600 font-semibold">SUBSCRIPTION.</h2>
+        <hr class="my-3">
+        <p>Suponiendo que se tiene el siguiente observable: </p>
+        <pre class="whitespace-pre-wrap">
+          <code>
+            this.interval$ = new <span class="text-indigo-600">Observable</span> < <code-type>number</code-type>  >( suscriber => {{'{'}}
+              let i = 0;
+              const interval = setInterval( () => {{'{'}}
+                suscriber.next(i);
+                i++;
+              {{'}'}}, 1000);
+            {{'}'}});
+          </code>
+        </pre>
+        <p class="text-justify">Para suscribirse se podria hacer de la siguiente manera, pero si se analiza el codigo más a profundidad se puede llegar a la conclusión que no hay una manera de cerrar ese stream de datos y va a estar constantemente emitiendo un valor e imprimiendolo en consola. </p>
+        <pre class="whitespace-pre-wrap">
+          <code>
+            this.interval$.subscribe( console.log )
+          </code>
+        </pre>
+        <p class="text-justify">Una mejor manera de hacer el paso anterior es declarando una variable de tipo <code-type>Subscription</code-type> la cual guardara la referencia de la subscripción y permitira que esta sea cancelada en cualquier momento a travez del metodo <span class="text-purple-600">unsubscribe</span></p>
+        <pre class="whitespace-pre-wrap">
+          <code>
+            public subscription: <code-type>Subscription</code-type> ;
+    
+            subscription = this.interval$.subscribe( console.log );
+          </code>
+        </pre>
+      </article>
+      <article class="p-4 rounded-md shadow shadow-slate-700">
+        <h2 class="text-2xl text-indigo-600 font-semibold">UNSUBSCRIPTION.</h2>
+        <hr class="my-3">
+        <p class="text-justify">Para cerrar el stream de datos solo basta con tomas la variable en la cual esta la referencia a la subscripción y ejecutar el metodo <span class="text-purple-600">unsubscribe</span> esto inmediatamente cerrara el stream de datos al cual se estaba suscrito. Pero hay que tener cuidado cuando de ntro del observador se estan ejecutando procesos que necesitan ser cerrados para evitar fugas de memoria, en este caso el <span class="text-purple-600">setInterval</span> si no se cierra de algun modo va a seguir ejecutandose en segundo plano aunque ya se allá cancelado la subscripción al stream
+        </p>
+        <pre class="whitespace-pre-wrap">
+          <code>
+            this.subscription.unsubscribe();
+          </code>
+        </pre>
+      </article>
+      <article class="p-4 rounded-md shadow shadow-slate-700">
+        <h2 class="text-2xl text-indigo-600 font-semibold">TEARDOWNLOGIC.</h2>
+        <hr class="my-3">
+        <p class="text-justify">Para el problema planteado anteriormente al ejecutar el <span class="text-purple-600">unsubscribe</span> se tiene el teardown el cual puede ser un callback que se ejecuta al momento de realizar la cancelación de la subscripción, en el cual se pueden cerrar todos los procesos internos que haga el observable que puedan quedar ejecutandose en segundo plano. Por lo tanto el codígo quedaria de la siguiente manera: </p>
+        <pre class="whitespace-pre-wrap">
+          <code>
+            this.interval$ = new Observable< <code-type>number</code-type> >( suscriber => {{'{'}}
+              let i = 0;
+              <span class="text-yellow-700">// interval: Referencia al intervalo en ejecución</span>
+              const interval = setInterval( () => {{'{'}}
+                suscriber.next(i);
+                i++;
+              {{'}'}}, 1000);
+              
+              <span class="text-yellow-700">// teardownlogic, se ejecuta al momento de cancelar la suscripción y elimina el intervalo que se estaba ejecutando</span>
+              return () => {{'{'}}
+                clearInterval(interval);
+              {{'}'}}
+            {{'}'}});
+          </code>
+        </pre>
+      </article>
+    </div>
+    <article class="p-4 rounded-md shadow shadow-slate-700">
+      <h2 class="text-2xl text-indigo-600 font-semibold">EJEMPLO:</h2>
+      <hr class="my-4">
+      <div class="my-2">
+        <span *ngFor="let item of streamedData" class="text-lg"><b>{{item}}</b> - </span>
+        <span class="font-bold text-lg text-red-800" *ngIf="subscription?.closed">CLOSED</span>
+      </div>
+      <div class="flex flex-row gap-3">
+        <button (click)="startSubscription()"
+                type="button" 
+                class="bg-indigo-600 p-2 rounded-md hover:bg-indigo-900">
+          Suscribirse
+        </button>
+        <button (click)="cancelSubscription()"
+                type="button" 
+                class="bg-red-600 p-2 rounded-md hover:bg-red-900">
+          Cancelar suscripción
+        </button>
+      </div>
+    </article>
+    <article class="p-4 rounded-md shadow shadow-slate-700">
+      <h2 class="text-2xl text-indigo-600 font-semibold">IMPORTANTE:</h2>
+      <hr class="my-4">
+      <ul class="list-inside list-disc text-justify flex flex-col gap-4">
+        <li>Se debe tener cuidado al realizar una subscripción, si se ejecutan varios ordenes de subscripción en un corto latso de tiempo, y no se guarda referencia a cada una de estas subscripciones, puede quedar alguna fuga de memoria.</li>
+        <li>Si se cancela una subscripción y se vuelve a subscribir, el flujo de datos no empieza donde quedo en la pausa si no que vuelve e inicia desde el principio ya que es una nueva instancia.</li>
+        <li>Dentro de la suscripción se tiene el metodo <span class="text-purple-600">add()</span> el cual permite agregar un teardown (callback) que se ejecutara al momento de realizarse la cancelación de la subscripción. Tambien se tiene el metodo <span class="text-purple-600">remove()</span> que permite quitar un teardown agregado previamente, si se agrega el mismo teardown multiples veces con <span class="text-purple-600">add()</span> se debe llamar la misma cantidad de veces el <span class="text-purple-600">remove()</span>.</li>
+        <li>En la suscripción se tiene el atributo <span class="text-purple-600">closed</span> el cual indica si una suscripción ya fue cerrada</li>
+      </ul>
+    </article>
+  </div>
+</section>
