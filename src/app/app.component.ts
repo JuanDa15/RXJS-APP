@@ -30,6 +30,10 @@ export class AppComponent {
           name: 'Observable',
           url: '/observable'
         },
+        {
+          name: 'Subs and unsubs',
+          url: '/subscription'
+        },
       ]
     }
   ]
