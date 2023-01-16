@@ -1,0 +1,161 @@
+<section class="w-full">
+  <h1 class="text-4xl mb-2 break-all">
+    SUBJECT
+  </h1>
+  <hr class="mb-4">
+  <div class="flex flex-col gap-4">
+
+    <section class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+      <p-card>
+        <p>Es un tipo especial de observable, esto viene a resolver el problema de los observables que cada subscripcion emite un valor completamente diferente según la instancia. En este caso con el <span class="font-bold text-indigo-700">subject</span> sin importar la cantidad de subscripciones que se tengan, a todos los suscriptores les va ha llegar el mismo valor.</p>
+        <pre class="whitespace-pre-wrap">
+          <code>
+            public subject$ = new Subject()
+          </code>
+        </pre>
+      </p-card>
+      <p-card>
+        <h2 class="text-2xl text-indigo-600 font-semibold">
+          NOTA.
+        </h2>
+        <hr class="my-3">
+        Cuando la información es producida por el observable en sí mismo, es considerado un "Cold Observable". Pero cuando la información es producida FUERA del observable es llamado "Hot observable", viendolo de este modo un sobject nos permite transformar un cold observable en un hot observable
+      </p-card>
+    </section>
+    <section class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+      <p-card>
+        <h2 class="text-2xl text-indigo-600 font-semibold">
+          METODOS.
+        </h2>
+        <hr class="my-3">
+        <p class="mt-4">
+          Algunos de los metodos que posee este tipo de observable son: 
+        </p>
+        <ul class="list-inside list-disc">
+          <li>
+            <b>subscribe:</b> Permite subscribirse al stream de datos del observable
+          </li>
+          <li>
+            <b>asObservable:</b> Permite crear un observable a partir de este subject como fuente de datos. 
+          </li>
+          <li>
+            <b>pipe:</b> Permite usar operadores de rxjs al momento de escuchar el stream de datos.
+          </li>
+          <li><b>next, error, complete</b></li>
+        </ul>
+        <p class="mt-4">
+          Tambien tiene algunas propiedades como:
+        </p>
+        <ul class="list-inside list-disc">
+          <li>
+            <b>observed:</b> Devuelve la cantidad de observers que estan suscritos al subject
+          </li>
+        </ul>
+      </p-card>
+      <p-card>
+        <h2 class="text-2xl text-indigo-600 font-semibold">
+          CARACTERISTICAS.
+        </h2>
+        <hr class="my-3">
+        <p>Algunas caracteristicas importantes del subject son: </p>
+        <ul class="list-inside list-disc">
+          <li>
+            <b>Casteo multiple:</b> Muchas subscripciones van a estar sujetas al mismo subject, por lo que esto sirve para distribuir la información a todos los lugares a los que este suscrito.
+          </li>
+          <li>
+            <b>Tambien es un observer:</b> Se puede enviar como un argumento al subscribe
+            <pre class="whitespace-pre-wrap">
+              <code>
+                public subject$ = new Subject();
+    
+                public intervalo$ = new Observable< number >( subs => {{'{'}}
+                  let interval = setInterval( () => {{'{'}}
+                    subs.next(Math.random())
+                  {{'}'}}, 1000);
+              
+                  return () => {{'{'}}
+                    clearInterval(interval);
+                  {{'}'}}
+                {{'}'}});
+    
+                this.intervalo$.subscribe(this.subject$);
+              </code>
+            </pre>
+          </li>
+        </ul>
+      </p-card>
+    </section>
+    <p-card>
+      <h2 class="text-2xl text-indigo-600 font-semibold">
+        OBSERVABLE NORMAL.
+      </h2>
+      <hr class="my-3">
+      <p class="mb-4">Se va realizar la subscripción al mismo intervalo 4 veces, el cual recibira un numero completamente diferente en cada instancia: </p>
+      <div class="flex flex-row gap-4 my-4">
+        <button type="button"
+                (click)="initializeRandom()"
+                class="bg-indigo-600 p-2 rounded-md hover:bg-indigo-900">
+          Iniciar ejemplo
+        </button>
+        <button (click)="cancelRandomSubscription()"
+                type="button" 
+                class="bg-red-600 p-2 rounded-md hover:bg-red-900">
+            Cancelar suscripción
+        </button>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
+            *ngIf="randomAnswers[0].length > 0">
+        <p-card class="flex flex-col gap-2"
+                *ngFor="let answers of randomAnswers;let i = index">
+          <h2 class="text-2xl text-indigo-500 mb-3">
+            Observable {{i}}
+          </h2>
+          <hr class="mb-4">
+          <p *ngFor="let item of answers; let i = index">
+            <b class="text-indigo-600">{{i}} -</b> {{item}}
+          </p>
+          <p class="text-green-500 font-bold"
+             *ngIf="randomSubscriptionsArr$[i]?.closed">
+            Completado
+          </p>
+        </p-card>
+      </div>
+    </p-card>
+    <p-card>
+      <h2 class="text-2xl text-indigo-600 font-semibold">
+        SUBJECT.
+      </h2>
+      <hr class="my-3">
+      <p class="mb-4">Se va realizar la subscripción al mismo intervalo 4 veces, el cual recibira el mismo valor en las 4 instancias: </p>
+      <div class="flex flex-row gap-4 my-4">
+        <button type="button"
+                (click)="initializeSubject()"
+                class="bg-indigo-600 p-2 rounded-md hover:bg-indigo-900">
+          Iniciar ejemplo
+        </button>
+        <button (click)="cancelSubject()"
+                type="button" 
+                class="bg-red-600 p-2 rounded-md hover:bg-red-900">
+          Cancelar suscripción
+        </button>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
+           *ngIf="subjectAnswers[0].length > 0">
+        <p-card class="flex flex-col gap-2"
+                *ngFor="let answers of subjectAnswers;let i = index">
+          <h2 class="text-2xl text-indigo-500 mb-3">
+            Observable {{i}}
+          </h2>
+          <hr class="mb-4">
+          <p *ngFor="let item of answers; let i = index">
+            <b class="text-indigo-600">{{i}} -</b> {{item}}
+          </p>
+          <p class="text-green-500 font-bold"
+             *ngIf="subjectSubscriptionsArr$[i]?.closed">
+            Completado
+          </p>
+        </p-card>
+      </div>
+    </p-card>
+  </div>
+</section>

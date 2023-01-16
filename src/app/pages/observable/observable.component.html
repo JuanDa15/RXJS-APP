@@ -2,7 +2,7 @@
   <h1 class="text-4xl mb-2">OBSERVABLE</h1>
   <hr class="mb-4">
   <div class="grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-2 gap-4">
-    <article class="p-4 rounded-md shadow shadow-slate-700 lg:col-start-1">
+    <p-card class="lg:col-start-1">
       <h2 class="text-2xl text-indigo-600 font-semibold">CREACIÓN</h2>
       <hr class="mt-3">
       <pre class="whitespace-pre-wrap">
@@ -14,8 +14,8 @@
           public obs$ = new <span class="text-indigo-600">Observable</span>< <code-type>StreamDataType</code-type> >()
         </code>
       </pre>
-    </article>
-    <article class="p-4 rounded-md shadow shadow-slate-700 lg:col-start-2 lg:row-start-1 lg:row-span-full">
+    </p-card>
+    <p-card class="lg:col-start-2 lg:row-start-1 lg:row-span-full">
       <h2 class="text-2xl text-indigo-600 font-semibold">SUBSCRIPCIÓN</h2>
       <hr class="mt-3">
       <pre class="whitespace-pre-wrap">
@@ -56,8 +56,8 @@
           </code>
         </pre>
       </div>
-    </article>
-    <article class="p-4 rounded-md shadow shadow-slate-700 lg:row-start-2 lg:col-start-1">
+    </p-card>
+    <p-card class="lg:row-start-2 lg:col-start-1">
       <h2 class="text-2xl text-indigo-600 font-semibold">Ejemplo</h2>
       <hr class="my-4">
       
@@ -85,6 +85,6 @@
               class="bg-indigo-600 p-2 rounded-md hover:bg-indigo-900">
         Iniciar stream de datos
       </button>
-    </article>
+    </p-card>
   </div>
 </section>

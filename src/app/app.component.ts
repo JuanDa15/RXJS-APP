@@ -34,6 +34,10 @@ export class AppComponent {
           name: 'Subs and unsubs',
           url: '/subscription'
         },
+        {
+          name: 'Subject',
+          url: '/subject'
+        }
       ]
     }
   ]

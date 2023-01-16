@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ObservableComponent } from './pages/observable/observable.component';
+import { SubjectComponent } from './pages/subject/subject.component';
 import { SubscriptionComponent } from './pages/subscription/subscription.component';
 
 const routes: Routes = [
@@ -13,6 +14,11 @@ const routes: Routes = [
     path: 'subscription',
     component: SubscriptionComponent,
     title: 'Subscription and unsubscription'
+  },
+  {
+    path: 'subject',
+    component: SubjectComponent,
+    title: 'subject'
   },
   {
     path: '**',
