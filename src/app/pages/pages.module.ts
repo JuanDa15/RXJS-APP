@@ -4,6 +4,7 @@ import { ObservableComponent } from './observable/observable.component';
 import { ComponentsModule } from '../components/components.module';
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { SubjectComponent } from './subject/subject.component';
+import { OfComponent } from './of/of.component';
 
 
 
@@ -11,7 +12,8 @@ import { SubjectComponent } from './subject/subject.component';
   declarations: [
     ObservableComponent,
     SubscriptionComponent,
-    SubjectComponent
+    SubjectComponent,
+    OfComponent
   ],
   imports: [
     CommonModule,

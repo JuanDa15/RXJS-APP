@@ -1,0 +1,68 @@
+<section class="w-full">
+  <h1 class="text-4xl mb-2 break-all">
+    of - <code class="text-indigo-600">of()</code>
+  </h1>
+  <hr class="mb-4">
+  <section class="grid grid-cols-1 gap-4 lg:grid-cols-2">
+    <p-card>
+      <h2 class="text-2xl text-indigo-500 font-semibold mb-3">
+        CREACIÓN
+      </h2>
+      <hr class="mb-4">
+      <p>
+        Es una función que nos permite crear observables en base a un listado de elementos, por ende va a emitir los valores en secuencia de manera sincrona y cuando emite el ultimo valor se completa
+      </p>
+      <pre class="whitespace-pre-wrap">
+        <code>
+          const observable$ = of()
+        </code>
+      </pre>
+    </p-card>
+    <p-card>
+      <h2 class="text-2xl text-indigo-500 font-semibold mb-3">
+        IMPLEMENTACIÓN
+      </h2>
+      <hr class="mb-4">
+      <p>
+        Como se dice anteriormente crea un observable en base a un listado, por ende como argumento se le debe enviar un listado de datos separado por ' , '
+      </p>
+      <pre class="whitespace-pre-wrap">
+        <code>
+          const observable$ = of(1, 2, 3, 4, 5, 6)
+  
+          // output
+          1  ->  2  ->  3  ->  4  ->  5 ->  6
+        </code>
+      </pre>
+      <p>
+        Si se envia un arreglo el observable emitira un unico valor con el arreglo enviado al argumento.
+      </p>
+      <pre class="whitespace-pre-wrap">
+        <code>
+          const observable$ = of([1, 2, 3, 4, 5, 6])
+  
+          // output
+          - [1, 2, 3, 4, 5, 6]
+        </code>
+      </pre>
+    </p-card>
+    <p-card class="lg:col-span-full">
+      <h2 class="text-2xl text-indigo-500 font-semibold mb-3">
+        EJEMPLO
+      </h2>
+      <hr class="mb-4">
+      <button type="button"
+            (click)="subscribe()"
+            class="bg-indigo-600 p-2 rounded-md hover:bg-indigo-900">
+        Iniciar ejemplo
+      </button>
+      <div>
+        <p *ngFor="let item of results"
+           class="text-indigo-500 text-lg font-bold">
+          - {{item}}
+        </p>
+        <p *ngIf="isCompleted" class="text-green-500 text-lg font-bold">Completado</p>
+      </div>
+    </p-card>
+  </section>
+</section>
