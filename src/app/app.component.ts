@@ -23,7 +23,7 @@ export class AppComponent {
 
   public asideData: AsideItem[] = [
     {
-      name: 'Basic observable',
+      name: 'Observable basico',
       isOpen: false,
       childs: [
         {
@@ -37,6 +37,32 @@ export class AppComponent {
         {
           name: 'Subject',
           url: '/subject'
+        }
+      ]
+    },
+    {
+      name: 'Funciones de creación',
+      isOpen: false,
+      childs: [
+        {
+          name: 'Of',
+          url: '/of'
+        },
+        {
+          name: 'FromEvent',
+          url: ''
+        },
+        {
+          name: 'Interval',
+          url: ''
+        },
+        {
+          name: 'Timer',
+          url: ''
+        },
+        {
+          name: 'AsyncScheduler',
+          url: ''
         }
       ]
     }
