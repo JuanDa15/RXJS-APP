@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Observable, Subject, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-subject',
   templateUrl: './subject.component.html',
-  styleUrls: ['./subject.component.scss']
+  styles: ['']
 })
 export class SubjectComponent {
   public subjectAnswers: number[][];
