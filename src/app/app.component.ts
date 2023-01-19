@@ -50,7 +50,7 @@ export class AppComponent {
         },
         {
           name: 'FromEvent',
-          url: ''
+          url: '/fromEvent'
         },
         {
           name: 'Interval',

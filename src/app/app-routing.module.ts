@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { FromEventComponent } from './pages/from-event/from-event.component';
 import { ObservableComponent } from './pages/observable/observable.component';
 import { OfComponent } from './pages/of/of.component';
 import { SubjectComponent } from './pages/subject/subject.component';
@@ -25,6 +26,11 @@ const routes: Routes = [
     path: 'of',
     component: OfComponent,
     title: 'of'
+  },
+  {
+    path: 'fromEvent',
+    component: FromEventComponent,
+    title: 'fromEvent'
   },
   {
     path: '**',
