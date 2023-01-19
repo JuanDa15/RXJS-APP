@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { delay, Observable, of, tap } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-of',
   templateUrl: './of.component.html',
-  styleUrls: ['./of.component.scss']
+  styles: ['']
 })
 export class OfComponent implements OnInit {
 

@@ -1,6 +1,6 @@
 <section class="w-full">
   <h1 class="text-4xl mb-2 break-all">
-    of - <code class="text-indigo-600">of()</code>
+    of - <code class="text-indigo-600">of(...args)</code>
   </h1>
   <hr class="mb-4">
   <section class="grid grid-cols-1 gap-4 lg:grid-cols-2">
@@ -14,9 +14,16 @@
       </p>
       <pre class="whitespace-pre-wrap">
         <code>
-          const observable$ = of()
+          const observable$ = of();
+
+          const observable$ = of(1,2,3,4,5,6);
         </code>
       </pre>
+      <div class="my-4">
+        <p class="font-bold text-indigo-500">DATA STREAM: </p>
+        <hr class="my-3">
+        <img class="w-full rounded-md" src="/assets/images/of.png" alt="of-output-data-stream">
+      </div>
     </p-card>
     <p-card>
       <h2 class="text-2xl text-indigo-500 font-semibold mb-3">

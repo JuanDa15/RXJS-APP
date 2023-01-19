@@ -5,6 +5,7 @@ import { ComponentsModule } from '../components/components.module';
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { SubjectComponent } from './subject/subject.component';
 import { OfComponent } from './of/of.component';
+import { FromEventComponent } from './from-event/from-event.component';
 
 
 
@@ -13,7 +14,8 @@ import { OfComponent } from './of/of.component';
     ObservableComponent,
     SubscriptionComponent,
     SubjectComponent,
-    OfComponent
+    OfComponent,
+    FromEventComponent
   ],
   imports: [
     CommonModule,
