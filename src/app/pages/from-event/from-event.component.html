@@ -1,0 +1,109 @@
+<section class="w-full">
+  <h1 class="text-4xl mb-2 break-all">
+    fromEvent - 
+    <code class="text-indigo-600">fromEvent(target, eventName)</code>
+  </h1>
+  <hr class="mb-4">
+  <div class="flex flex-col gap-4">
+    <p-card>
+      <h2 class="text-2xl text-indigo-500 font-semibold mb-3">
+        CREACIÓN
+      </h2>
+      <hr class="mb-4">
+      <p>
+        Create un observable que emite eventos de un tipo especifico provenientes del elemento dado.
+      </p>
+      <pre class="whitespace-pre-wrap my-4 border-[1px] rounded-md border-gray-700">
+        <code>
+          const src$ = fromEvent( target, event );
+        </code>
+      </pre>
+      <p class="mb-4">
+        Una vez suscritos a este observable, cada que se ejecute un evento sobre el elemento dado, este se va a emitir.
+      </p>
+      <div class="my-4">
+        <p class="font-bold text-indigo-500">DATA STREAM: </p>
+        <hr class="my-3">
+        <img class="w-full rounded-md" src="/assets/images/fromEvent.png" alt="fromEvent data stream">
+      </div>
+    </p-card>
+    <p-card>
+      <h2 class="text-2xl text-indigo-500 font-semibold mb-3">
+        IMPLEMENTACIÓN
+      </h2>
+      <hr class="mb-4">
+      <p>
+        Primero se selecciona el elemento html sobre el cual queremos crear el observable.
+      </p>
+      <pre class="whitespace-pre-wrap my-4 border-[1px] rounded-md border-gray-700">
+        <code>
+          < input type="text" id="inputTest" #inputTest>  
+        </code>
+      </pre>
+      <p>
+        Luego se toma la referencia del elemento html, en el archivo TS o JS.
+        En angular se puede tomar la referencia a travez del <code-type>ViewChild</code-type> o con javascript vanilla usando el <code-type>document.querySelector</code-type> ó el <code-type>document.getElementById</code-type>.
+      </p>
+      <pre class="whitespace-pre-wrap my-4 border-[1px] rounded-md border-gray-700">
+        <code>
+          // Con viewChild
+          @ViewChild('inputTest') input!: ElementRef< HTMLInputElement >;
+  
+          // Con javascript vanilla
+          public input = document.getElementById('inputTest')
+        </code>
+      </pre>
+      <p>
+        Una vez se tiene la referencia del elemento, se debe inicializar el obsevable, en angular es importante que al momento de inicializar el observable se haga en la parte del ciclo de vida de <code-type>AfterViewInit</code-type> ya que estamos garantizando que todo el dom ya se haya cargado y no se le envia un undefined al <code-type>fromEvent</code-type> y no se genera un error en tiempo de ejecución.
+      </p>
+      <pre class="whitespace-pre-wrap my-4 border-[1px] rounded-md border-gray-700">
+        <code>
+          // Declaración del observable
+          public src$: Observable< InputEvent > | null;
+  
+  
+          // Inicialización de la variable src$: Se inicializa en null ya que en las 
+          // ultimas versiones de Angular es necesario inicializar los atributos
+          // según las reglas de linter que se esten usando;
+          constructor() {{'{'}}
+            this.src$ = null;
+          {{'}'}}
+  
+  
+          // Inicialización del observable
+          ngAfterViewInit(): void {{'{'}}
+            this.src$ = fromEvent< InputEvent >(this.input?.nativeElement, 'input');
+          {{'}'}}
+        </code>
+      </pre>
+      <p>
+        Por ultimo ya se podria realizar la subscripción al observable y empezar a recibir los eventos cada que el usuario escriba algo en el input.
+      </p>
+    </p-card>
+    <p-card>
+      <h2 class="text-2xl text-indigo-500 font-semibold mb-3">
+        EJEMPLO
+      </h2>
+      <hr class="mb-4">
+      <p class="my-4">
+        El div azul tiene un fromEvent bindeado que cada que se da click sobre él, emite el evento y pinta un punto rojo sobre el div, al mismo tiempo pone las posiciones al lado derecho del div.
+      </p>
+      <section class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="w-full h-[300px] bg-indigo-700 rounded-md relative"
+            #box>
+            <button class="absolute bottom-1 left-1 bg-indigo-600 p-2 rounded-md hover:bg-indigo-900"
+                    (click)="reset( $event )">
+              Reset
+            </button>
+        </div>
+        <div *ngIf="points.length > 0">
+          <h3 class="font-bold text-indigo-500">POSICIONES</h3>
+          <hr class="my-2">
+          <p *ngFor="let item of points; let i = index">
+            Punto {{i}} = {{item}}
+          </p>
+        </div>
+      </section>
+    </p-card>
+  </div>
+</section>
