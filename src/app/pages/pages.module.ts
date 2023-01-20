@@ -7,7 +7,7 @@ import { SubjectComponent } from './subject/subject.component';
 import { OfComponent } from './of/of.component';
 import { FromEventComponent } from './from-event/from-event.component';
 import { RangeComponent } from './range/range.component';
-
+import { ReactiveFormsModule } from '@angular/forms'
 
 
 @NgModule({
@@ -21,7 +21,8 @@ import { RangeComponent } from './range/range.component';
   ],
   imports: [
     CommonModule,
-    ComponentsModule
+    ComponentsModule,
+    ReactiveFormsModule
   ]
 })
 export class PagesModule { }
