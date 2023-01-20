@@ -53,6 +53,10 @@ export class AppComponent {
           url: '/fromEvent'
         },
         {
+          name: 'Range',
+          url: '/range'
+        },
+        {
           name: 'Interval',
           url: ''
         },

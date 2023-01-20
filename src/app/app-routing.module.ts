@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { FromEventComponent } from './pages/from-event/from-event.component';
 import { ObservableComponent } from './pages/observable/observable.component';
 import { OfComponent } from './pages/of/of.component';
+import { RangeComponent } from './pages/range/range.component';
 import { SubjectComponent } from './pages/subject/subject.component';
 import { SubscriptionComponent } from './pages/subscription/subscription.component';
 
@@ -31,6 +32,11 @@ const routes: Routes = [
     path: 'fromEvent',
     component: FromEventComponent,
     title: 'fromEvent'
+  },
+  {
+    path: 'range',
+    component: RangeComponent,
+    title: 'range'
   },
   {
     path: '**',
