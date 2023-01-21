@@ -7,7 +7,9 @@ import { SubjectComponent } from './subject/subject.component';
 import { OfComponent } from './of/of.component';
 import { FromEventComponent } from './from-event/from-event.component';
 import { RangeComponent } from './range/range.component';
-import { ReactiveFormsModule } from '@angular/forms'
+import { ReactiveFormsModule } from '@angular/forms';
+import { TimerComponent } from './timer/timer.component';
+import { IntervalComponent } from './interval/interval.component'
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { ReactiveFormsModule } from '@angular/forms'
     SubjectComponent,
     OfComponent,
     FromEventComponent,
-    RangeComponent
+    RangeComponent,
+    TimerComponent,
+    IntervalComponent
   ],
   imports: [
     CommonModule,
