@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FromEventComponent } from './pages/from-event/from-event.component';
+import { IntervalComponent } from './pages/interval/interval.component';
 import { ObservableComponent } from './pages/observable/observable.component';
 import { OfComponent } from './pages/of/of.component';
 import { RangeComponent } from './pages/range/range.component';
 import { SubjectComponent } from './pages/subject/subject.component';
 import { SubscriptionComponent } from './pages/subscription/subscription.component';
+import { TimerComponent } from './pages/timer/timer.component';
 
 const routes: Routes = [
   {
@@ -37,6 +39,16 @@ const routes: Routes = [
     path: 'range',
     component: RangeComponent,
     title: 'range'
+  },
+  {
+    path: 'interval',
+    component: IntervalComponent,
+    title: 'interval'
+  },
+  {
+    path: 'timer',
+    component: TimerComponent,
+    title: 'timer'
   },
   {
     path: '**',

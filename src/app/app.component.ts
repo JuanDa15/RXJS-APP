@@ -58,11 +58,11 @@ export class AppComponent {
         },
         {
           name: 'Interval',
-          url: ''
+          url: '/interval'
         },
         {
           name: 'Timer',
-          url: ''
+          url: '/timer'
         },
         {
           name: 'AsyncScheduler',
