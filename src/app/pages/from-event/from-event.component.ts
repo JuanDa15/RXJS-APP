@@ -31,8 +31,8 @@ export class FromEventComponent implements AfterViewInit, OnDestroy {
     this.subscription = this.src$?.subscribe({
       next: (event) => {
         const {x, y} = this._getPointPositionInDiv(event);
-        this.points.push([x,y]);
         let child = this._createPoint(x,y, this.points.length);
+        this.points.push([x,y]);
         this.childs.push(child);
         this.box.nativeElement.appendChild(child);
       }
@@ -41,7 +41,7 @@ export class FromEventComponent implements AfterViewInit, OnDestroy {
 
   private _createPoint(x: number, y: number, position: number): HTMLDivElement {
     const element = document.createElement('div');
-    let classList = [`inline-block`,`w-[8px]`,`h-[8px]`, `bg-red-500`, 'absolute', 'rounded-full'];
+    let classList = [`w-[8px]`, `bg-red-500`, 'absolute', 'rounded-full', 'z-10',`h-[8px]`];
     element.setAttribute('id', `point-${position}`);
     element.classList.add(...classList)
     element.style.transform = `translate(${x}px,${y}px)`;
