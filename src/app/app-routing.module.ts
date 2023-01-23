@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AsyncSchedulerComponent } from './pages/async-scheduler/async-scheduler.component';
 import { FromEventComponent } from './pages/from-event/from-event.component';
 import { IntervalComponent } from './pages/interval/interval.component';
 import { ObservableComponent } from './pages/observable/observable.component';
@@ -49,6 +50,11 @@ const routes: Routes = [
     path: 'timer',
     component: TimerComponent,
     title: 'timer'
+  },
+  {
+    path: 'async-scheduler',
+    component: AsyncSchedulerComponent,
+    title: 'async-scheduler'
   },
   {
     path: '**',

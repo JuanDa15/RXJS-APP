@@ -48,16 +48,16 @@
       <hr class="mb-4">
       <div class="grid grid-cols-1 md:grid-cols-2 py-4 gap-4">
         <div class="flex flex-col relative">
-          <label for="" class="absolute text-indigo-600 top-[-14px] left-[6px] text-xs bg-slate-900 z-[1] p-[.3rem] font-semibold">
+          <label for="range-start" class="absolute text-indigo-600 top-[-14px] left-[6px] text-xs bg-slate-900 z-[1] p-[.3rem] font-semibold">
             Range start: 
           </label>
-          <input class="bg-slate-900 border-[1px] border-indigo-600 py-[.3rem] px-[.6rem] rounded-sm" type="number" [formControl]="min">
+          <input class="bg-slate-900 border-[1px] border-indigo-600 py-[.3rem] px-[.6rem] rounded-sm" type="number" [formControl]="min" id="range-start">
         </div>
         <div class="flex flex-col relative">
-          <label for="" class="absolute text-indigo-600 top-[-14px] left-[6px] text-xs bg-slate-900 z-[1] p-[.3rem] font-semibold">
+          <label for="emissions_quantity" class="absolute text-indigo-600 top-[-14px] left-[6px] text-xs bg-slate-900 z-[1] p-[.3rem] font-semibold">
             Emissions quantity: 
           </label>
-          <input class="bg-slate-900 border-[1px] border-indigo-600 py-[.3rem] px-[.6rem] rounded-sm" type="number" [formControl]="emissions">
+          <input class="bg-slate-900 border-[1px] border-indigo-600 py-[.3rem] px-[.6rem] rounded-sm" type="number" [formControl]="emissions" id="emissions_quantity">
         </div>
         <button class="col-span-full bg-indigo-600 p-2 rounded-md hover:bg-indigo-900" (click)="startSubscription()">
           Iniciar

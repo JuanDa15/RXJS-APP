@@ -7,9 +7,10 @@ import { SubjectComponent } from './subject/subject.component';
 import { OfComponent } from './of/of.component';
 import { FromEventComponent } from './from-event/from-event.component';
 import { RangeComponent } from './range/range.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TimerComponent } from './timer/timer.component';
-import { IntervalComponent } from './interval/interval.component'
+import { IntervalComponent } from './interval/interval.component';
+import { AsyncSchedulerComponent } from './async-scheduler/async-scheduler.component'
 
 
 @NgModule({
@@ -21,12 +22,14 @@ import { IntervalComponent } from './interval/interval.component'
     FromEventComponent,
     RangeComponent,
     TimerComponent,
-    IntervalComponent
+    IntervalComponent,
+    AsyncSchedulerComponent
   ],
   imports: [
     CommonModule,
     ComponentsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class PagesModule { }

@@ -1,6 +1,86 @@
-<p>interval works!</p>
-
-<!-- eS UNA FUNCION QUE NOS PERMITE CREAR OBSERVABLES QUE TRABAJA CON INTERVALOS DE TIEMPO, AL SUBSCRIBIRNOS A ESTE OBSERVABLE TENEMOS UNA SECUENCIA DE VALORES QUE SE GENERA DESDE 0 HASTA EL INFINITO, Y CADA EMISION SE HARIA SEGUN EL INTERVALO DE TIEMPO QUE SE HAYA ASIGNADO, es un observable asincrono por naturaleza
-  -->
-
-  <!-- Timer, es muy similar al interval, a diferencia del interval que emite un valor cada que se complete el intervalo de tiempo dado, este lo que hace es que cuando se completa el tiempo que se le asigno por el parametro emite un valor y se completa automaticamente, este es el funcionamiento por defecto del timer pero tiene algunas configuraciones especiales -->
+<section class="w-full">
+  <h1 class="text-4xl mb-2 break-all">
+    interval - 
+    <code class="text-indigo-600">interval(period)</code>
+  </h1>
+  <hr class="mb-4">
+  <section class="flex flex-col gap-4">
+    <p-card>
+      <h2 class="text-2xl text-indigo-500 font-semibold mb-3">
+        CREACIÓN
+      </h2>
+      <hr class="mb-4">
+      <p>
+        Crea un observable que trabaja con intervalos de tiempo. al subscribirse a este observable se tiene una secuencia de valores que se genera desde 0 hasta el infinito o hasta que es observable sea detenido.
+      </p>
+      <pre class="whitespace-pre-wrap max-w-[600px] mx-auto border-[1px] rounded-md border-gray-700">
+        <code>
+          const interval$ = interval( 2000 )
+        </code>
+      </pre>
+      <img src="assets/images/interval.png"
+           class="w-full max-w-[600px] mx-auto mt-4 rounded-md"
+           width="700" height="183" alt="timer">
+      <p class="mt-4">
+        Este observable a diferencia de otros observables es asíncrono por naturaleza.
+      </p>
+    </p-card>
+    <p-card>
+      <h2 class="text-2xl text-indigo-500 font-semibold mb-3">
+        NOTAS
+      </h2>
+      <hr class="mb-4">
+      <ul class="list-inside list-disc">
+        <li>
+          El observable siempre va a emitir números desde 0, si se quiere recibir otros valores se debe mapear la respuesta del observable con un operador.
+        </li>
+      </ul>
+    </p-card>
+    <p-card>
+      <h2 class="text-2xl text-indigo-500 font-semibold mb-3">
+        EJEMPLO
+      </h2>
+      <hr class="mb-4">
+      <p *ngIf="isMapped"
+          class="text-sm text-sky-500 mb-5">
+        Cada valor emitido por el observable sera multiplicado * 2
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-3">
+        <div class="flex flex-col relative col-span-full md:col-span-2">
+          <label for="" class="absolute text-indigo-600 top-[-14px] left-[6px] text-xs bg-slate-900 z-[1] p-[.3rem] font-semibold">
+            Interval: 
+          </label>
+          <input class="bg-slate-900 border-[1px] border-indigo-600 py-[.3rem] px-[.6rem] rounded-sm" type="number" [formControl]="time" min="0">
+        </div>
+        <button type="button"
+                class="bg-indigo-600 p-2 rounded-md hover:bg-indigo-900 disabled:bg-indigo-900 disabled:opacity-60"
+                [disabled]="time.invalid"
+                (click)="startSubscription()">
+          INICIAR
+        </button>
+        <button type="button"
+                class="bg-emerald-600 p-2 rounded-md hover:bg-emerald-900"
+                (click)="subscribeToMapData()">
+          MAPEAR
+        </button>
+        <button type="button"
+                class="bg-rose-600 p-2 rounded-md hover:bg-rose-900"
+                (click)="cancelSubscription()">
+          PARAR
+        </button>
+      </div>
+      <div *ngIf="results.length > 0" class="mt-3">
+        <h3 class="font-bold">RESULTS:</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6">
+          <p *ngFor="let result of results">
+            {{result}} -
+          </p>
+          <p *ngIf="subscription?.closed"
+             class="text-emerald-600 font-bold">
+            COMPLETADO
+          </p>
+        </div>
+      </div>
+    </p-card>
+  </section>
+</section>
