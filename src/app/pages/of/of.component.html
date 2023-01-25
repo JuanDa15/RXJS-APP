@@ -10,7 +10,7 @@
       </h2>
       <hr class="mb-4">
       <p>
-        Es una función que nos permite crear observables en base a un listado de elementos, por ende va a emitir los valores en secuencia de manera sincrona y cuando emite el ultimo valor se completa
+        Es una función que nos permite crear observables en base a un listado de elementos, por ende va a emitir los valores en secuencia de manera sincrona y cuando emite el ultimo valor se completa, tambien hay otra manera de crear observables con la función <code-type>from</code-type>.
       </p>
       <pre class="whitespace-pre-wrap">
         <code>
@@ -36,7 +36,7 @@
       <pre class="whitespace-pre-wrap">
         <code>
           const observable$ = of(1, 2, 3, 4, 5, 6)
-  
+
           // output
           1  ->  2  ->  3  ->  4  ->  5 ->  6
         </code>
@@ -47,7 +47,7 @@
       <pre class="whitespace-pre-wrap">
         <code>
           const observable$ = of([1, 2, 3, 4, 5, 6])
-  
+
           // output
           - [1, 2, 3, 4, 5, 6]
         </code>
