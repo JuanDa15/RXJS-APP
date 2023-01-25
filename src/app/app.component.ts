@@ -66,7 +66,7 @@ export class AppComponent {
         },
         {
           name: 'AsyncScheduler',
-          url: ''
+          url: '/async-scheduler'
         }
       ]
     }
