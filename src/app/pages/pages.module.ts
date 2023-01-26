@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ObservableComponent } from './observable/observable.component';
+import { ObservableComponent } from './observables/observable/observable.component';
 import { ComponentsModule } from '../components/components.module';
-import { SubscriptionComponent } from './subscription/subscription.component';
-import { SubjectComponent } from './subject/subject.component';
-import { OfComponent } from './of/of.component';
-import { FromEventComponent } from './from-event/from-event.component';
-import { RangeComponent } from './range/range.component';
+import { SubscriptionComponent } from './observables/subscription/subscription.component';
+import { SubjectComponent } from './observables/subject/subject.component';
+import { OfComponent } from './observables/of/of.component';
+import { FromEventComponent } from './observables/from-event/from-event.component';
+import { RangeComponent } from './observables/range/range.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { TimerComponent } from './timer/timer.component';
-import { IntervalComponent } from './interval/interval.component';
-import { AsyncSchedulerComponent } from './async-scheduler/async-scheduler.component'
+import { TimerComponent } from './observables/timer/timer.component';
+import { IntervalComponent } from './observables/interval/interval.component';
+import { AsyncSchedulerComponent } from './observables/async-scheduler/async-scheduler.component';
+import { OperatorComponent } from './operators/operator/operator.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { AsyncSchedulerComponent } from './async-scheduler/async-scheduler.compo
     RangeComponent,
     TimerComponent,
     IntervalComponent,
-    AsyncSchedulerComponent
+    AsyncSchedulerComponent,
+    OperatorComponent
   ],
   imports: [
     CommonModule,

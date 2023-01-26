@@ -28,15 +28,15 @@ export class AppComponent {
       childs: [
         {
           name: 'Observable',
-          url: '/observable'
+          url: '/observables/observable'
         },
         {
           name: 'Subs and unsubs',
-          url: '/subscription'
+          url: '/observables/subscription'
         },
         {
           name: 'Subject',
-          url: '/subject'
+          url: '/observables/subject'
         }
       ]
     },
@@ -46,27 +46,27 @@ export class AppComponent {
       childs: [
         {
           name: 'Of',
-          url: '/of'
+          url: '/observables/of'
         },
         {
           name: 'FromEvent',
-          url: '/fromEvent'
+          url: '/observables/fromEvent'
         },
         {
           name: 'Range',
-          url: '/range'
+          url: '/observables/range'
         },
         {
           name: 'Interval',
-          url: '/interval'
+          url: '/observables/interval'
         },
         {
           name: 'Timer',
-          url: '/timer'
+          url: '/observables/timer'
         },
         {
           name: 'AsyncScheduler',
-          url: '/async-scheduler'
+          url: '/observables/async-scheduler'
         }
       ]
     }
