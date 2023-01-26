@@ -12,6 +12,7 @@ import { TimerComponent } from './observables/timer/timer.component';
 import { IntervalComponent } from './observables/interval/interval.component';
 import { AsyncSchedulerComponent } from './observables/async-scheduler/async-scheduler.component';
 import { OperatorComponent } from './operators/operator/operator.component';
+import { MapComponent } from './operators/map/map.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { OperatorComponent } from './operators/operator/operator.component';
     TimerComponent,
     IntervalComponent,
     AsyncSchedulerComponent,
-    OperatorComponent
+    OperatorComponent,
+    MapComponent
   ],
   imports: [
     CommonModule,

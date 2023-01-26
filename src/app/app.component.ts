@@ -69,6 +69,44 @@ export class AppComponent {
           url: '/observables/async-scheduler'
         }
       ]
+    },
+    {
+      name: 'Operadores',
+      isOpen: false,
+      childs: [
+        {
+          name: 'Operador',
+          url: '/operators/operator'
+        },
+        {
+          name: 'Map',
+          url: '/operators/map'
+        },
+        {
+          name: 'Pluck',
+          url: '/operators/pluck'
+        },
+        {
+          name: 'Map to',
+          url: '/operators/map-to'
+        },
+        {
+          name: 'Filter',
+          url: '/operators/filter'
+        },
+        {
+          name: 'Tap',
+          url: '/operators/tap'
+        },
+        {
+          name: 'Reduce',
+          url: '/operators/reduce'
+        },
+        {
+          name: 'Scan',
+          url: '/operators/scan'
+        },
+      ]
     }
   ]
 }
