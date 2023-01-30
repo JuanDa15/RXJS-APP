@@ -9,6 +9,7 @@ import { RangeComponent } from './pages/observables/range/range.component';
 import { SubjectComponent } from './pages/observables/subject/subject.component';
 import { SubscriptionComponent } from './pages/observables/subscription/subscription.component';
 import { TimerComponent } from './pages/observables/timer/timer.component';
+import { MapToComponent } from './pages/operators/map-to/map-to.component';
 import { MapComponent } from './pages/operators/map/map.component';
 import { OperatorComponent } from './pages/operators/operator/operator.component';
 
@@ -76,6 +77,11 @@ const routes: Routes = [
         path: 'map',
         component: MapComponent,
         title: 'map'
+      },
+      {
+        path: 'map-to',
+        component: MapToComponent,
+        title: 'map to'
       }
     ]
   },

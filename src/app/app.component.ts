@@ -105,7 +105,7 @@ export class AppComponent {
         {
           name: 'Scan',
           url: '/operators/scan'
-        },
+        }
       ]
     }
   ]
