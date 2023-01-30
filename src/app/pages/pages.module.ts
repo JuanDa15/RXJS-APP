@@ -13,6 +13,7 @@ import { IntervalComponent } from './observables/interval/interval.component';
 import { AsyncSchedulerComponent } from './observables/async-scheduler/async-scheduler.component';
 import { OperatorComponent } from './operators/operator/operator.component';
 import { MapComponent } from './operators/map/map.component';
+import { MapToComponent } from './map-to/map-to.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { MapComponent } from './operators/map/map.component';
     IntervalComponent,
     AsyncSchedulerComponent,
     OperatorComponent,
-    MapComponent
+    MapComponent,
+    MapToComponent
   ],
   imports: [
     CommonModule,
