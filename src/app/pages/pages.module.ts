@@ -14,6 +14,7 @@ import { AsyncSchedulerComponent } from './observables/async-scheduler/async-sch
 import { OperatorComponent } from './operators/operator/operator.component';
 import { MapComponent } from './operators/map/map.component';
 import { MapToComponent } from './operators/map-to/map-to.component';
+import { PluckComponent } from './operators/pluck/pluck.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { MapToComponent } from './operators/map-to/map-to.component';
     AsyncSchedulerComponent,
     OperatorComponent,
     MapComponent,
-    MapToComponent
+    MapToComponent,
+    PluckComponent
   ],
   imports: [
     CommonModule,

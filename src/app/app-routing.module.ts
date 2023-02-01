@@ -12,6 +12,7 @@ import { TimerComponent } from './pages/observables/timer/timer.component';
 import { MapToComponent } from './pages/operators/map-to/map-to.component';
 import { MapComponent } from './pages/operators/map/map.component';
 import { OperatorComponent } from './pages/operators/operator/operator.component';
+import { PluckComponent } from './pages/operators/pluck/pluck.component';
 
 const routes: Routes = [
   {
@@ -82,6 +83,11 @@ const routes: Routes = [
         path: 'map-to',
         component: MapToComponent,
         title: 'map to'
+      },
+      {
+        path: 'pluck',
+        component: PluckComponent,
+        title: 'pluck'
       }
     ]
   },

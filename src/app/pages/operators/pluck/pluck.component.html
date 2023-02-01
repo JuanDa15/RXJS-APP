@@ -1,0 +1,65 @@
+<section class="w-full">
+  <h1 class="text-4xl mb-2 break-all">
+    Pluck - <code class="text-indigo-600">pluck(...[properties])</code>
+  </h1>
+  <hr class="mb-4">
+  <section class="flex flex-col gap-4">
+    <p-card>
+      <p>
+        El operador pluck es una función que sirve para extraer un valor del objeto que se esta recibiendo del observador fuente, y que este valor extraido sea la nueva emisión (salida) del observable.
+      </p>
+      <p>
+        Este operador puede trabajar tanto con objetos de una capa, como con objetos anidados.
+      </p>
+      <img src="/assets/images/pluck.png"
+           class="w-full max-w-[600px] mx-auto mt-4 rounded-md"
+           alt="map operator" width="600px" height="183">
+    </p-card>
+    <p-card>
+      <h2 class="text-2xl text-indigo-500 font-semibold mb-3">
+        EJEMPLO
+      </h2>
+      <hr class="mb-4">
+      <p>
+        Se implementara un ejemplo en el que cada vez que se escriba en el input, se mostrara el atributo del evento input, HTMLInputElement
+      </p>
+      <div>
+        <h3 class="text-xl font-bold my-2">Ejemplos:</h3>
+        <ul class="text-sm text-sky-500 list-inside list-disc my-3">
+          <li>
+            Propiedad capa 1: target
+          </li>
+          <li>
+            Propiedad anidada: target,value
+            <span class="block text-red-600">
+              **Sin espacios despues de la coma**
+            </span>
+          </li>
+        </ul>
+        <section class="flex gap-4 my-4">
+          <input class="w-full px-2 py-2 rounded-sm bg-slate-800"
+               type="text" [formControl]="properties"
+               placeholder="Ingresa el campo para extraer">
+        </section>
+        <section class="flex flex-col gap-4">
+          <p class="text-xs">
+            Presiona iniciar para actualizar la salida del observable
+          </p>
+          <div class="flex gap-4">
+            <input type="text" #test id="input-test" class="w-full px-2 py-2 rounded-sm bg-slate-800"
+            type="text">
+            <button class="bg-indigo-600 p-2 rounded-md hover:bg-indigo-900 disabled:bg-indigo-900 disabled:opacity-60 " type="button" (click)="start()">Iniciar</button>
+          </div>
+        </section>
+        <section *ngIf="results.length > 0">
+          <h3 class="text-xl font-bold my-2">Resultados:</h3>
+          <ul class="list-inside list-disc">
+            <li *ngFor="let item of results">
+              {{item | json}}
+            </li>
+          </ul>
+        </section>
+      </div>
+    </p-card>
+  </section>
+</section>

@@ -17,6 +17,33 @@
     </p-card>
     <p-card>
       <h2 class="text-2xl text-indigo-500 font-semibold mb-3">
+        USO
+      </h2>
+      <hr class="mb-4">
+      <pre class="whitespace-pre-wrap max-w-[600px] mx-auto border-[1px] rounded-md border-gray-700 mb-3">
+        <code>
+          const src$ = range(1,10)
+        </code>
+      </pre>
+      <p>
+        Una vez se tiene un observable se puede hacer el uso de los operadores de dos maneras, usandolo directamente en la creación del observable o en una subscripción especifica si no se necesita mapear los datos en todas las subscripciones
+      </p>
+      <pre class="whitespace-pre-wrap max-w-[600px] mx-auto border-[1px] rounded-md border-gray-700 my-3">
+        <code>
+          // Opción 1
+          const src$ = range(1,10).pipe(
+            map( val => val * 10)
+          )
+
+          // Opción 2
+          src$.pipe(
+            map( val => val * 10)
+          ).subscribe( console.log )
+        </code>
+      </pre>
+    </p-card>
+    <p-card>
+      <h2 class="text-2xl text-indigo-500 font-semibold mb-3">
         LISTA DE OPERADORES
       </h2>
       <hr class="mb-4">
