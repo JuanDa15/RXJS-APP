@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { mapTo, Observable, range, Subscription, tap } from 'rxjs';
+import { AsyncAction } from 'rxjs/internal/scheduler/AsyncAction';
+import { AsyncScheduler } from 'rxjs/internal/scheduler/AsyncScheduler';
 
 @Component({
   selector: 'app-map-to',
@@ -7,7 +9,7 @@ import { mapTo, Observable, range, Subscription, tap } from 'rxjs';
   styles: [
   ]
 })
-export class MapToComponent implements OnInit {
+export class MapToComponent implements OnDestroy {
 
   public results: string[];
   public origin: number[];
@@ -20,20 +22,24 @@ export class MapToComponent implements OnInit {
     this.src$ = range(10,10);
     this.subs = null;
    }
-
-  ngOnInit(): void {
+  ngOnDestroy(): void {
+    this.subs?.unsubscribe();
   }
 
   start() {
+    (!this.subs?.closed) && this.subs?.unsubscribe();
     this.origin = [];
     this.results = [];
-    this.subs = this.src$.pipe(
-      tap(val => this.origin.push(val)),
-      mapTo('Hello world')
-    ).subscribe({
-      next: (val) => {
-        this.results.push(val);
-      }
-    })
+
+    setTimeout(() => {
+      this.subs = this.src$.pipe(
+        tap(val => this.origin.push(val)),
+        mapTo('Hello world')
+      ).subscribe({
+        next: (val) => {
+          this.results.push(val);
+        }
+      })
+    }, 1000)
   }
 }
