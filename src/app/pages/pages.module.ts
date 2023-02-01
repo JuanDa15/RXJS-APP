@@ -15,6 +15,7 @@ import { OperatorComponent } from './operators/operator/operator.component';
 import { MapComponent } from './operators/map/map.component';
 import { MapToComponent } from './operators/map-to/map-to.component';
 import { PluckComponent } from './operators/pluck/pluck.component';
+import { FilterComponent } from './operators/filter/filter.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { PluckComponent } from './operators/pluck/pluck.component';
     OperatorComponent,
     MapComponent,
     MapToComponent,
-    PluckComponent
+    PluckComponent,
+    FilterComponent
   ],
   imports: [
     CommonModule,

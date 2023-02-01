@@ -1,0 +1,93 @@
+<section class="w-full">
+  <h1 class="text-4xl mb-2 break-all">
+    Filter - <code class="text-indigo-600">filter( predicate )</code>
+  </h1>
+  <hr class="mb-4" />
+  <section class="flex flex-col gap-4">
+    <p-card>
+      <p>
+        El operador fiilter es una función que a cada valor emitido por el observador fuente retorna el valor que cumpla con un predicado (condición) especificada.
+      </p>
+      <img
+        src="/assets/images/filter.png"
+        class="w-full max-w-[600px] mx-auto mt-4 rounded-md"
+        alt="filter"
+        width="600px"
+        height="183"
+      />
+    </p-card>
+    <p-card>
+      <h2 class="text-2xl text-indigo-500 font-semibold mb-3">
+        EJEMPLO
+      </h2>
+      <hr class="mb-4" />
+      <p>
+        Se implementara un ejemplo en el que por cada valor emitido por el observador fuente, se retornada otro valor el cual cumpla con el predicado que se le especifique
+      </p>
+      <pre
+        class="whitespace-pre-wrap max-w-[600px] mx-auto border-[1px] rounded-md border-gray-700 mb-3"
+      >
+      <code>
+        const DATA = [
+          {{'{'}} id: 1, name: 'apple', category: 'fruit' {{'}'}},
+          {{'{'}} id: 4, name: 'potato', category: 'vegetable' {{'}'}},
+          {{'{'}} id: 3, name: 'strawberry', category: 'fruit' {{'}'}},
+          {{'{'}} id: 5, name: 'carrot', category: 'vegetable' {{'}'}},
+          {{'{'}} id: 2, name: 'pine-apple', category: 'fruit' {{'}'}},
+          {{'{'}} id: 6, name: 'onion', category: 'vegetable' {{'}'}},
+          {{'{'}} id: 7, name: 'broccoli', category: 'vegetable' {{'}'}},
+          {{'{'}} id: 8, name: 'mango', category: 'fruit' {{'}'}},
+          {{'{'}} id: 9, name: 'grappe', category: 'fruit' {{'}'}},
+          {{'{'}} id: 10, name: 'garlic', category: 'vegetable' }
+        ]
+
+        const src$ = from(DATA)
+      </code>
+    </pre>
+    <p class="my-4">Se filtrara por category 'fruit':</p>
+    <pre
+      class="whitespace-pre-wrap max-w-[600px] mx-auto border-[1px] rounded-md border-gray-700 mb-3"
+    >
+    <code>
+      src$.pipe(filter( val => val.category === 'fruit') )
+    </code>
+  </pre>
+    </p-card>
+    <p-card>
+      <h2 class="text-2xl text-indigo-500 font-semibold mb-3">
+        IMPLEMENTACIÓN
+      </h2>
+      <hr class="mb-4" />
+      <div>
+        <h3 class="text-s text-indigo-500 font-semibold mb-3">
+          FILTROS
+        </h3>
+        <section class="flex flex-row gap-4 justify-between flex-wrap">
+          <button type="button" class="w-[100px] bg-sky-600 p-2 rounded-md hover:bg-indigo-900 disabled:bg-sky-900 disabled:opacity-60" (click)="start('vegetables')"
+                  [class.bg-purple-600]="filter['vegetables']">
+            Vegetales
+          </button>
+          <button type="button" class="w-[100px] bg-orange-600 p-2 rounded-md hover:bg-indigo-900 disabled:bg-orange-900 disabled:opacity-60" (click)="start('fruits')"
+                  [class.bg-purple-600]="filter['fruits']">
+            Frutas
+          </button>
+          <button type="button" class="w-[100px] bg-emerald-600 p-2 rounded-md hover:bg-indigo-900 disabled:bg-emerald-900 disabled:opacity-60" (click)="start('id')" [class.bg-purple-600]="filter['id']">
+            id > 5
+          </button>
+          <button type="button" class="w-[100px] bg-yellow-600 p-2 rounded-md hover:bg-indigo-900 disabled:bg-yellow-900 disabled:opacity-60" (click)="start('contains')" [class.bg-purple-600]="filter['contains']">
+            Contiene 'a'
+          </button>
+        </section>
+        <hr class="my-3">
+        <p-card *ngIf="results.length > 0">
+          <ul class="list-inside list-disc">
+            <ng-container *ngFor="let item of results">
+              <li class="p-2">{{item.id}} - {{item.name}} - {{item.category}}</li>
+              <hr>
+            </ng-container>
+          </ul>
+        </p-card>
+      </div>
+    </p-card>
+  </section>
+</section>
