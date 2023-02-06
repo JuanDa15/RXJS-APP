@@ -16,6 +16,7 @@ import { MapComponent } from './operators/map/map.component';
 import { MapToComponent } from './operators/map-to/map-to.component';
 import { PluckComponent } from './operators/pluck/pluck.component';
 import { FilterComponent } from './operators/filter/filter.component';
+import { TapComponent } from './operators/tap/tap.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { FilterComponent } from './operators/filter/filter.component';
     MapComponent,
     MapToComponent,
     PluckComponent,
-    FilterComponent
+    FilterComponent,
+    TapComponent
   ],
   imports: [
     CommonModule,

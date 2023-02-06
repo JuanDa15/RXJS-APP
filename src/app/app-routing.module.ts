@@ -14,6 +14,7 @@ import { MapToComponent } from './pages/operators/map-to/map-to.component';
 import { MapComponent } from './pages/operators/map/map.component';
 import { OperatorComponent } from './pages/operators/operator/operator.component';
 import { PluckComponent } from './pages/operators/pluck/pluck.component';
+import { TapComponent } from './pages/operators/tap/tap.component';
 
 const routes: Routes = [
   {
@@ -94,6 +95,11 @@ const routes: Routes = [
         path: 'filter',
         component: FilterComponent,
         title: 'filter'
+      },
+      {
+        path: 'tap',
+        component: TapComponent,
+        title: 'tap'
       }
     ]
   },

@@ -41,6 +41,29 @@
           ).subscribe( console.log )
         </code>
       </pre>
+      <p>
+        Los operadores se pueden encadenar, para aplicar varios operadores a una misma emisión del observador padre, y se podría hacer de dos maneras,  se debe tener en cuenta que el orden en que se pongan los operadores es importante ya que si no se tiene en cuenta que tipo de dato entra y sale en
+        cada operador puede generar errores
+      </p>
+      <pre class="whitespace-pre-wrap max-w-[600px] mx-auto border-[1px] rounded-md border-gray-700 my-3">
+        <code>
+          // Opción 1
+          const src$ = range(1,10).pipe(
+            tap( val => console.log(val) ),
+            map( val => val * 10),
+            filter( val => val % 2 === 0)
+          )
+
+          // Opción 2
+          src$.pipe(
+            tap( val => console.log(val) ),
+          ).pipe(
+            map( val => val * 10)
+          ).pipe(
+            filter( val => val % 2 === 0)
+          ).subscribe( console.log )
+        </code>
+      </pre>
     </p-card>
     <p-card>
       <h2 class="text-2xl text-indigo-500 font-semibold mb-3">
