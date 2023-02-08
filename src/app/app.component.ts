@@ -107,6 +107,16 @@ export class AppComponent {
           url: '/operators/scan'
         }
       ]
+    },
+    {
+      name: 'Labs',
+      isOpen: false,
+      childs: [
+        {
+          name: 'Progress-bar',
+          url: '/labs/progress-bar'
+        }
+      ]
     }
   ]
 }

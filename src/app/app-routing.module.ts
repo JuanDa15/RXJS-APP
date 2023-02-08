@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ProgressBarComponent } from './pages/labs/progress-bar/progress-bar.component';
 import { AsyncSchedulerComponent } from './pages/observables/async-scheduler/async-scheduler.component';
 import { FromEventComponent } from './pages/observables/from-event/from-event.component';
 import { IntervalComponent } from './pages/observables/interval/interval.component';
@@ -100,6 +101,16 @@ const routes: Routes = [
         path: 'tap',
         component: TapComponent,
         title: 'tap'
+      }
+    ]
+  },
+  {
+    path: 'labs',
+    children: [
+      {
+        path: 'progress-bar',
+        component: ProgressBarComponent,
+        title: 'progress bar'
       }
     ]
   },

@@ -17,6 +17,7 @@ import { MapToComponent } from './operators/map-to/map-to.component';
 import { PluckComponent } from './operators/pluck/pluck.component';
 import { FilterComponent } from './operators/filter/filter.component';
 import { TapComponent } from './operators/tap/tap.component';
+import { ProgressBarComponent } from './labs/progress-bar/progress-bar.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { TapComponent } from './operators/tap/tap.component';
     MapToComponent,
     PluckComponent,
     FilterComponent,
-    TapComponent
+    TapComponent,
+    ProgressBarComponent
   ],
   imports: [
     CommonModule,
