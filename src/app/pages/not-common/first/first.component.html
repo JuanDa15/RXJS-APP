@@ -1,0 +1,113 @@
+<section class="w-full">
+  <h1 class="text-4xl mb-2 break-all">
+    First -
+    <code class="text-indigo-600"> first( condition ) </code>
+  </h1>
+  <hr class="mb-4" />
+  <section class="flex flex-col gap-4">
+    <p-card>
+      <p>
+        El operador first es muy sencillo, ya que sirve para solamente emitir el
+        primer valor emitido por el observador fuente. Pero además de servir
+        solo para esto, se le puede pasar por parametro un predicado (condición)
+        la cual permite que solo se emita y se complete la suscripción cuando el
+        valor emitido cumpla con la condición.
+      </p>
+      <img
+        src="/assets/images/first.png"
+        class="w-full max-w-[600px] mx-auto mt-4 rounded-md"
+        alt="first operator"
+        width="600px"
+        height="183"
+      />
+    </p-card>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <p-card>
+        <h2 class="text-lg font-semibold text-center">
+          Solamente emite el primer valor que emita observable$
+        </h2>
+        <hr class="mt-4" />
+        <pre
+          class="whitespace-pre-wrap max-w-[600px] mx-auto border-[1px] rounded-md border-gray-700 mb-3 mt-4"
+        >
+          <code>
+            observable$.pipe(
+              first()
+            ).subscribe( console.log )
+          </code>
+        </pre>
+      </p-card>
+      <p-card>
+        <h2 class="text-lg font-semibold text-center">
+          Solamente emite el primer valor que cumpla con la condición
+        </h2>
+        <hr class="mt-4" />
+        <pre
+          class="whitespace-pre-wrap max-w-[600px] mx-auto border-[1px] rounded-md border-gray-700 mb-3 mt-4"
+        >
+          <code>
+            observable$.pipe(
+              first(value => value % 2 === 0)
+            ).subscribe( console.log )
+          </code>
+        </pre>
+      </p-card>
+    </div>
+    <p-card>
+      <h2 class="text-2xl text-indigo-500 font-semibold mb-3">
+        EJEMPLO
+      </h2>
+      <hr class="mb-4">
+      <p>
+        Se tiene un observable que emite 100 números, y según la opción
+        seleccionada emitira el primero que cumpla con la condición
+      </p>
+      <div class="flex flex-col md:flex-row gap-2 flex-wrap justify-between my-4">
+        <button
+          type="button"
+          class="bg-indigo-600 p-2 rounded-md hover:bg-indigo-900 disabled:bg-indigo-900 disabled:opacity-60 min-w-[150px]"
+          [ngClass]="{'bg-orange-600 hover:bg-orange-900': selected === 'default'}"
+          (click)="selected = 'default'"
+        >
+          Default
+        </button>
+        <button
+          type="button"
+          class="bg-indigo-600 p-2 rounded-md hover:bg-indigo-900 disabled:bg-indigo-900 disabled:opacity-60 min-w-[150px]"
+          [ngClass]="{'bg-orange-600 hover:bg-orange-900': selected === 'more50'}"
+          (click)="selected = 'more50'"
+        >
+          > 50
+        </button>
+        <button
+          type="button"
+          class="bg-indigo-600 p-2 rounded-md hover:bg-indigo-900 disabled:bg-indigo-900 disabled:opacity-60 min-w-[150px]"
+          [ngClass]="{'bg-orange-600 hover:bg-orange-900': selected === 'under30'}"
+          (click)="selected = 'under30'"
+        >
+          < 30
+        </button>
+        <button
+          type="button"
+          class="bg-indigo-600 p-2 rounded-md hover:bg-indigo-900 disabled:bg-indigo-900 disabled:opacity-60 min-w-[150px]"
+          [ngClass]="{'bg-orange-600 hover:bg-orange-900': selected === 'isPair'}"
+          (click)="selected = 'isPair'"
+        >
+          Primer par
+        </button>
+        <button
+          type="button"
+          class="bg-indigo-600 p-2 rounded-md hover:bg-indigo-900 disabled:bg-indigo-900 disabled:opacity-60 min-w-[150px]"
+          [ngClass]="{'bg-orange-600 hover:bg-orange-900': selected === 'pairMore50'}"
+          (click)="selected = 'pairMore50'"
+        >
+          Primer par, > 50
+        </button>
+      </div>
+      <p *ngIf="result" class="text-xl font-semibold my-4">
+        Resultado: <span class="text-emerald-600">{{result}}</span>
+      </p>
+      <button class="bg-indigo-600 p-2 rounded-md hover:bg-indigo-900 disabled:bg-indigo-900 disabled:opacity-60 min-w-[300px]" type="button" (click)="start()">Iniciar</button>
+    </p-card>
+  </section>
+</section>

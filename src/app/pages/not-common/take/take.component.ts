@@ -8,7 +8,7 @@ import { from, take } from 'rxjs';
   styles: [
   ]
 })
-export class TakeComponent implements OnInit {
+export class TakeComponent {
 
   public numbersArr = new Array(100);
   public emissionsNumber: FormControl;
@@ -17,10 +17,6 @@ export class TakeComponent implements OnInit {
     this.emissionsArr = [];
     this._fillArray();
     this.emissionsNumber = new FormControl(0, [Validators.required])
-  }
-
-  ngOnInit(): void {
-    this.start();
   }
 
   private _fillArray(): void {

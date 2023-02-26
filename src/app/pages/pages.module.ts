@@ -21,6 +21,7 @@ import { ProgressBarComponent } from './labs/progress-bar/progress-bar.component
 import { ReduceComponent } from './operators/reduce/reduce.component';
 import { ScanComponent } from './operators/scan/scan.component';
 import { TakeComponent } from './not-common/take/take.component';
+import { FirstComponent } from './not-common/first/first.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { TakeComponent } from './not-common/take/take.component';
     ProgressBarComponent,
     ReduceComponent,
     ScanComponent,
-    TakeComponent
+    TakeComponent,
+    FirstComponent
   ],
   imports: [
     CommonModule,

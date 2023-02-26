@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProgressBarComponent } from './pages/labs/progress-bar/progress-bar.component';
+import { FirstComponent } from './pages/not-common/first/first.component';
 import { TakeComponent } from './pages/not-common/take/take.component';
 import { AsyncSchedulerComponent } from './pages/observables/async-scheduler/async-scheduler.component';
 import { FromEventComponent } from './pages/observables/from-event/from-event.component';
@@ -124,6 +125,11 @@ const routes: Routes = [
         path: 'take',
         component: TakeComponent,
         title: 'take'
+      },
+      {
+        path: 'first',
+        component: FirstComponent,
+        title: 'first'
       }
     ]
   },
