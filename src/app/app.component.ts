@@ -109,6 +109,44 @@ export class AppComponent {
       ]
     },
     {
+      name: 'Operadores no comunes',
+      isOpen: false,
+      childs: [
+        {
+          name: 'Take',
+          url: '/not-commons/take'
+        },
+        {
+          name: 'First',
+          url: '/not-commons/first'
+        },
+        {
+          name: 'TakeWhile',
+          url: '/not-commons/take-while'
+        },
+        {
+          name: 'TakeUntil',
+          url: '/not-commons/take-until'
+        },
+        {
+          name: 'Skip',
+          url: '/not-commons/skip'
+        },
+        {
+          name: 'Distinct',
+          url: '/not-commons/distinct'
+        },
+        {
+          name: 'DistinctUntilChange',
+          url: '/not-commons/distinct-until-change'
+        },
+        {
+          name: 'DistinctUntilKeyChange',
+          url: '/not-commons/distinct-until-key-change'
+        }
+      ]
+    },
+    {
       name: 'Labs',
       isOpen: false,
       childs: [

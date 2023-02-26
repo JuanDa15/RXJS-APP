@@ -16,6 +16,7 @@ import { MapComponent } from './pages/operators/map/map.component';
 import { OperatorComponent } from './pages/operators/operator/operator.component';
 import { PluckComponent } from './pages/operators/pluck/pluck.component';
 import { ReduceComponent } from './pages/operators/reduce/reduce.component';
+import { ScanComponent } from './pages/operators/scan/scan.component';
 import { TapComponent } from './pages/operators/tap/tap.component';
 
 const routes: Routes = [
@@ -107,6 +108,11 @@ const routes: Routes = [
         path: 'reduce',
         component: ReduceComponent,
         title: 'reduce'
+      },
+      {
+        path: 'scan',
+        component: ScanComponent,
+        title: 'scan'
       }
     ]
   },

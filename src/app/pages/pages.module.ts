@@ -19,6 +19,7 @@ import { FilterComponent } from './operators/filter/filter.component';
 import { TapComponent } from './operators/tap/tap.component';
 import { ProgressBarComponent } from './labs/progress-bar/progress-bar.component';
 import { ReduceComponent } from './operators/reduce/reduce.component';
+import { ScanComponent } from './operators/scan/scan.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { ReduceComponent } from './operators/reduce/reduce.component';
     FilterComponent,
     TapComponent,
     ProgressBarComponent,
-    ReduceComponent
+    ReduceComponent,
+    ScanComponent
   ],
   imports: [
     CommonModule,
