@@ -114,35 +114,35 @@ export class AppComponent {
       childs: [
         {
           name: 'Take',
-          url: '/not-commons/take'
+          url: '/not-common/take'
         },
         {
           name: 'First',
-          url: '/not-commons/first'
+          url: '/not-common/first'
         },
         {
           name: 'TakeWhile',
-          url: '/not-commons/take-while'
+          url: '/not-common/take-while'
         },
         {
           name: 'TakeUntil',
-          url: '/not-commons/take-until'
+          url: '/not-common/take-until'
         },
         {
           name: 'Skip',
-          url: '/not-commons/skip'
+          url: '/not-common/skip'
         },
         {
           name: 'Distinct',
-          url: '/not-commons/distinct'
+          url: '/not-common/distinct'
         },
         {
           name: 'DistinctUntilChange',
-          url: '/not-commons/distinct-until-change'
+          url: '/not-common/distinct-until-change'
         },
         {
           name: 'DistinctUntilKeyChange',
-          url: '/not-commons/distinct-until-key-change'
+          url: '/not-common/distinct-until-key-change'
         }
       ]
     },

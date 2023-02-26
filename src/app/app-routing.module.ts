@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProgressBarComponent } from './pages/labs/progress-bar/progress-bar.component';
+import { TakeComponent } from './pages/not-common/take/take.component';
 import { AsyncSchedulerComponent } from './pages/observables/async-scheduler/async-scheduler.component';
 import { FromEventComponent } from './pages/observables/from-event/from-event.component';
 import { IntervalComponent } from './pages/observables/interval/interval.component';
@@ -113,6 +114,16 @@ const routes: Routes = [
         path: 'scan',
         component: ScanComponent,
         title: 'scan'
+      }
+    ]
+  },
+  {
+    path: 'not-common',
+    children: [
+      {
+        path: 'take',
+        component: TakeComponent,
+        title: 'take'
       }
     ]
   },
