@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProgressBarComponent } from './pages/labs/progress-bar/progress-bar.component';
+import { DistincComponent } from './pages/not-common/distinc/distinc.component';
 import { FirstComponent } from './pages/not-common/first/first.component';
+import { SkipComponent } from './pages/not-common/skip/skip.component';
+import { TakeUntilComponent } from './pages/not-common/take-until/take-until.component';
+import { TakeWhileComponent } from './pages/not-common/take-while/take-while.component';
 import { TakeComponent } from './pages/not-common/take/take.component';
 import { AsyncSchedulerComponent } from './pages/observables/async-scheduler/async-scheduler.component';
 import { FromEventComponent } from './pages/observables/from-event/from-event.component';
@@ -130,6 +134,26 @@ const routes: Routes = [
         path: 'first',
         component: FirstComponent,
         title: 'first'
+      },
+      {
+        path: 'take-while',
+        component: TakeWhileComponent,
+        title: 'take-while'
+      },
+      {
+        path: 'take-until',
+        component: TakeUntilComponent,
+        title: 'take-until'
+      },
+      {
+        path: 'skip',
+        component: SkipComponent,
+        title: 'skip'
+      },
+      {
+        path: 'distinct',
+        component: DistincComponent,
+        title: 'distinct'
       }
     ]
   },

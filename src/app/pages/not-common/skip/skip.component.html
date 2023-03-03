@@ -1,0 +1,51 @@
+<section class="w-full">
+  <h1 class="text-4xl mb-2 break-all">
+    Skip -
+    <code class="text-indigo-600">
+      skip( count )
+    </code>
+  </h1>
+  <hr class="mb-4">
+  <section class="flex flex-col gap-4">
+    <p-card>
+      <p>
+        El operador skip es una función muy sencilla que sirve para omitir una cantidad especificada de veces las emisiones de un observable fuente.
+      </p>
+      <img src="/assets/images/skip.png"
+           class="w-full max-w-[600px] mx-auto mt-4 rounded-md"
+           alt="skip" width="600px" height="183">
+      <pre class="whitespace-pre-wrap max-w-[600px] mx-auto border-[1px] rounded-md border-gray-700 mb-3 mt-4">
+        <code>
+          observable$.pipe(
+            skip( 3 )
+          ).subscribe( console.log )
+        </code>
+      </pre>
+    </p-card>
+    <p-card>
+      <h2 class="text-2xl text-indigo-500 font-semibold mb-3">
+        EJEMPLO
+      </h2>
+      <hr class="mb-4">
+      <p>
+        Se tiene un input en el que el valor ingresado es la cantidad de veces que se emitira el valor del observador fuente
+      </p>
+      <input
+        type="number"
+        class="w-full px-2 py-2 rounded-sm bg-slate-800 mb-4 mt-2"
+        [formControl]="emissionsNumber"
+      >
+      <div class="flex flex-row gap-4">
+        <button class="bg-indigo-600 p-2 rounded-md hover:bg-indigo-900 disabled:bg-indigo-900 disabled:opacity-60" type="button" (click)="start()">Iniciar</button>
+        <button class="bg-indigo-600 p-2 rounded-md hover:bg-indigo-900 disabled:bg-indigo-900 disabled:opacity-60" type="button" (click)="stop()">Parar</button>
+      </div>
+      <p class="font-medium text-lg my-4" *ngIf="results.length > 0">
+        Resultado:
+      </p>
+      <p class="font-bold text-sm text-emerald-500"
+            *ngFor="let item of results">
+        {{item}}
+      </p>
+    </p-card>
+  </section>
+</section>

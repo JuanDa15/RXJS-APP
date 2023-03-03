@@ -22,6 +22,10 @@ import { ReduceComponent } from './operators/reduce/reduce.component';
 import { ScanComponent } from './operators/scan/scan.component';
 import { TakeComponent } from './not-common/take/take.component';
 import { FirstComponent } from './not-common/first/first.component';
+import { TakeWhileComponent } from './not-common/take-while/take-while.component';
+import { TakeUntilComponent } from './not-common/take-until/take-until.component';
+import { SkipComponent } from './not-common/skip/skip.component';
+import { DistincComponent } from './not-common/distinc/distinc.component';
 
 
 @NgModule({
@@ -45,7 +49,11 @@ import { FirstComponent } from './not-common/first/first.component';
     ReduceComponent,
     ScanComponent,
     TakeComponent,
-    FirstComponent
+    FirstComponent,
+    TakeWhileComponent,
+    TakeUntilComponent,
+    SkipComponent,
+    DistincComponent
   ],
   imports: [
     CommonModule,
