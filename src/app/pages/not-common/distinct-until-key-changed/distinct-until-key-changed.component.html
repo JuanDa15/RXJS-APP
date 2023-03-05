@@ -1,0 +1,78 @@
+<section class="w-full">
+  <h1 class="text-4xl mb-2 break-all">
+    DistinctUntilKeyChanged -
+    <code class="text-indigo-600">
+      distinctUntilKeyChanged( key )
+    </code>
+  </h1>
+  <hr class="mb-4">
+  <section class="flex flex-col gap-4">
+    <p-card>
+      <p>
+        El operador distinctUntilChanged, es muy parecido al operador distinct,La unica diferencia es que este emite valores siempre y cuando la emisión anterior no sea la misma
+      </p>
+      <p>
+        <b>Key:</b> La llave en la cual se basara la comparación para determinar si son iguales
+      </p>
+      <p>
+        <b>comparator:</b> Es una condición adicional que puede ser agregada para añadir comparaciones extra al operador
+        <br>
+        Ejemplo de un comparator:
+        <br>
+        (x, y) => x.substring(0, 3) === y.substring(0, 3)
+      </p>
+      <img src="/assets/images/distinctUntilKeyChanged.png"
+           class="w-full max-w-[600px] mx-auto mt-4 rounded-md"
+           alt="distinct until key changed" width="600px" height="183">
+      <pre class="whitespace-pre-wrap max-w-[600px] mx-auto border-[1px] rounded-md border-gray-700 mb-3 mt-4">
+        <code>
+          observable$.pipe(
+            distinctUntilKeyChanged('name')
+          ).subscribe( console.log )
+
+          // Con una condición adicional
+          observable$.pipe(
+            distinctUntilKeyChanged(
+              'name',
+              (x, y) => x.substring(0, 3) === y.substring(0, 3)
+            )
+          ).subscribe( console.log )
+        </code>
+      </pre>
+    </p-card>
+    <p-card>
+      <h2 class="text-2xl text-indigo-500 font-semibold mb-3">
+        EJEMPLO
+      </h2>
+      <hr class="mb-4">
+      <p>
+        Se tiene un arreglo de objetos {{'{'}} name: string {{'}'}}, al momento de ser emitidos todos los valores en un observable se omiten solo los que cumplan con la condición adicional agregada al comparator en la key 'name'
+        <br>
+        (x, y) => x.substring(0, 3) === y.substring(0, 3)
+      </p>
+      <div class="my-2 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <p-card>
+          <h2 class="font-semibold text-xl">
+            Emisiones normales
+          </h2>
+          <hr>
+          <p *ngFor="let item of normalEmissions">
+            {{item| json}}
+          </p>
+        </p-card>
+        <p-card>
+          <h2 class="font-semibold text-xl">
+            Emisiones del distinct
+          </h2>
+          <hr>
+          <p *ngFor="let item of distincEmissions">
+            {{item | json}}
+          </p>
+        </p-card>
+      </div>
+    </p-card>
+  </section>
+</section>
+<!--
+  El distinctunTILkEYcHANGED es muy similar al distinct y al distinct untilChanged, la diferencia es que este esta pendiente de una llave especifica de un objeto, con la misma funcionalidad del operador distinctUntilChanged, que emite valores siempre y cuando el anterior no sea el mismo
+ -->

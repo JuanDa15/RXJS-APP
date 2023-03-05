@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProgressBarComponent } from './pages/labs/progress-bar/progress-bar.component';
 import { DistincComponent } from './pages/not-common/distinc/distinc.component';
+import { DistinctUntilChangedComponent } from './pages/not-common/distinct-until-changed/distinct-until-changed.component';
+import { DistinctUntilKeyChangedComponent } from './pages/not-common/distinct-until-key-changed/distinct-until-key-changed.component';
 import { FirstComponent } from './pages/not-common/first/first.component';
 import { SkipComponent } from './pages/not-common/skip/skip.component';
 import { TakeUntilComponent } from './pages/not-common/take-until/take-until.component';
@@ -154,6 +156,16 @@ const routes: Routes = [
         path: 'distinct',
         component: DistincComponent,
         title: 'distinct'
+      },
+      {
+        path: 'distinct-until-changed',
+        component: DistinctUntilChangedComponent,
+        title: 'distinct-until-changed'
+      },
+      {
+        path: 'distinct-until-key-changed',
+        component: DistinctUntilKeyChangedComponent,
+        title: 'distinct-until-key-changed'
       }
     ]
   },

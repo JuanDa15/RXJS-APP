@@ -26,6 +26,8 @@ import { TakeWhileComponent } from './not-common/take-while/take-while.component
 import { TakeUntilComponent } from './not-common/take-until/take-until.component';
 import { SkipComponent } from './not-common/skip/skip.component';
 import { DistincComponent } from './not-common/distinc/distinc.component';
+import { DistinctUntilChangedComponent } from './not-common/distinct-until-changed/distinct-until-changed.component';
+import { DistinctUntilKeyChangedComponent } from './not-common/distinct-until-key-changed/distinct-until-key-changed.component';
 
 
 @NgModule({
@@ -53,7 +55,9 @@ import { DistincComponent } from './not-common/distinc/distinc.component';
     TakeWhileComponent,
     TakeUntilComponent,
     SkipComponent,
-    DistincComponent
+    DistincComponent,
+    DistinctUntilChangedComponent,
+    DistinctUntilKeyChangedComponent
   ],
   imports: [
     CommonModule,

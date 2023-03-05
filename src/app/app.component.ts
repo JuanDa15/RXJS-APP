@@ -138,11 +138,11 @@ export class AppComponent {
         },
         {
           name: 'DistinctUntilChange',
-          url: '/not-common/distinct-until-change'
+          url: '/not-common/distinct-until-changed'
         },
         {
           name: 'DistinctUntilKeyChange',
-          url: '/not-common/distinct-until-key-change'
+          url: '/not-common/distinct-until-key-changed'
         }
       ]
     },
