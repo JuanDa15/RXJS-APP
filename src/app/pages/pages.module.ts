@@ -28,6 +28,11 @@ import { SkipComponent } from './not-common/skip/skip.component';
 import { DistincComponent } from './not-common/distinc/distinc.component';
 import { DistinctUntilChangedComponent } from './not-common/distinct-until-changed/distinct-until-changed.component';
 import { DistinctUntilKeyChangedComponent } from './not-common/distinct-until-key-changed/distinct-until-key-changed.component';
+import { DebounceTimeComponent } from './time/debounce-time/debounce-time.component';
+import { ThrottleTimeComponent } from './time/throttle-time/throttle-time.component';
+import { SampleTimeComponent } from './time/sample-time/sample-time.component';
+import { SampleComponent } from './time/sample/sample.component';
+import { AuditTimeComponent } from './time/audit-time/audit-time.component';
 
 
 @NgModule({
@@ -57,7 +62,12 @@ import { DistinctUntilKeyChangedComponent } from './not-common/distinct-until-ke
     SkipComponent,
     DistincComponent,
     DistinctUntilChangedComponent,
-    DistinctUntilKeyChangedComponent
+    DistinctUntilKeyChangedComponent,
+    DebounceTimeComponent,
+    ThrottleTimeComponent,
+    SampleTimeComponent,
+    SampleComponent,
+    AuditTimeComponent
   ],
   imports: [
     CommonModule,

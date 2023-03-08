@@ -147,6 +147,32 @@ export class AppComponent {
       ]
     },
     {
+      name: 'Operadores de tiempo',
+      isOpen: false,
+      childs: [
+        {
+          name: 'DebounceTime',
+          url: '/time/debounce-time'
+        },
+        {
+          name: 'ThrottleTime',
+          url: '/time/throttle-time'
+        },
+        {
+          name: 'SampleTime',
+          url: '/time/sample-time'
+        },
+        {
+          name: 'Sample',
+          url: '/time/sample'
+        },
+        {
+          name: 'AuditTime',
+          url: '/time/audit-time'
+        }
+      ]
+    },
+    {
       name: 'Labs',
       isOpen: false,
       childs: [

@@ -1,0 +1,72 @@
+<section class="w-full">
+  <h1 class="text-4xl mb-2 break-all">
+    ThrottleTime -
+    <code class="text-indigo-600">
+      throttleTime( duration, scheduler, config )
+    </code>
+  </h1>
+  <hr class="mb-4">
+  <section class="flex flex-col gap-4">
+    <p-card>
+      <p>
+        El operador debounceTime es un operador que trabaja en base
+        a intervalos de tiempo, ayuda a contar cuantas
+        milesimas de segundo han pasado desde la ultima emisión antes de volver a emitir nuevamente un valor, si esas milesimas de
+        segundo sobrepasan el valor enviado al operador, emitira nuevamente.
+      </p>
+      <p>
+        <b>duration:</b> Tiempo de espera antes de emitir el siguiente valor
+      </p>
+      <p>
+        <b>scheduler:</b> para administrar los temporizadores que manejan la emisión
+      </p>
+      <p>
+        <b>config:</b> un objeto de configuración para definir el comportamiento inicial y final
+      </p>
+      <img src="/assets/images/throttleTime.png"
+           class="w-full max-w-[600px] mx-auto mt-4 rounded-md"
+           alt="throttle time" width="600px" height="183">
+      <pre class="whitespace-pre-wrap max-w-[600px] mx-auto border-[1px] rounded-md border-gray-700 mb-3 mt-4">
+        <code>
+          observable$.pipe(
+            throttleTime(2000, asapScheduler, {{'{'}}
+              leading: true,
+              trailing: true
+            {{'}'}})
+          ).subscribe( console.log )
+        </code>
+      </pre>
+    </p-card>
+    <p-card>
+      <h2 class="text-2xl text-indigo-500 font-semibold mb-3">
+        EJEMPLO
+      </h2>
+      <hr class="mb-4">
+      <p>
+        Se tiene un input, en el cual se podra escribir y luego de 3s
+        se emitira el valor ingresado
+      </p>
+      <input type="text" #input class="w-full px-2 py-2 rounded-sm bg-slate-800 mb-4" [formControl]="testInput">
+      <div class="my-2 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <p-card *ngIf="normalEmissions.length > 0">
+          <h2 class="font-semibold text-xl">
+            Emisiones normales
+          </h2>
+          <hr>
+          <p *ngFor="let item of normalEmissions">
+            {{item| json}}
+          </p>
+        </p-card>
+        <p-card *ngIf="throttleEmissions.length > 0">
+          <h2 class="font-semibold text-xl">
+            Emisiones del throttle
+          </h2>
+          <hr>
+          <p *ngFor="let item of throttleEmissions">
+            {{item | json}}
+          </p>
+        </p-card>
+      </div>
+    </p-card>
+  </section>
+</section>

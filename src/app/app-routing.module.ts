@@ -26,6 +26,11 @@ import { PluckComponent } from './pages/operators/pluck/pluck.component';
 import { ReduceComponent } from './pages/operators/reduce/reduce.component';
 import { ScanComponent } from './pages/operators/scan/scan.component';
 import { TapComponent } from './pages/operators/tap/tap.component';
+import { AuditTimeComponent } from './pages/time/audit-time/audit-time.component';
+import { DebounceTimeComponent } from './pages/time/debounce-time/debounce-time.component';
+import { SampleTimeComponent } from './pages/time/sample-time/sample-time.component';
+import { SampleComponent } from './pages/time/sample/sample.component';
+import { ThrottleTimeComponent } from './pages/time/throttle-time/throttle-time.component';
 
 const routes: Routes = [
   {
@@ -166,6 +171,36 @@ const routes: Routes = [
         path: 'distinct-until-key-changed',
         component: DistinctUntilKeyChangedComponent,
         title: 'distinct-until-key-changed'
+      }
+    ]
+  },
+  {
+    path: 'time',
+    children: [
+      {
+        path: 'debounce-time',
+        component: DebounceTimeComponent,
+        title: 'debounce-time'
+      },
+      {
+        path: 'throttle-time',
+        component: ThrottleTimeComponent,
+        title: 'throttle-time'
+      },
+      {
+        path: 'sample-time',
+        component: SampleTimeComponent,
+        title: 'sample-time'
+      },
+      {
+        path: 'sample',
+        component: SampleComponent,
+        title: 'sample'
+      },
+      {
+        path: 'audit-time',
+        component: AuditTimeComponent,
+        title: 'audit time'
       }
     ]
   },
