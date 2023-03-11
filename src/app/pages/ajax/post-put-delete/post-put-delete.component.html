@@ -1,0 +1,158 @@
+<section class="w-full">
+  <h1 class="text-4xl mb-2 break-all">
+    AJAX METHODS -
+    <code class="text-indigo-600"> GET, POST, PUT, DELETE </code>
+  </h1>
+  <hr class="mb-4" />
+  <p>
+    public observer = {{'{'}}
+      next: (val: any) => console.log(val),
+      error: (err: any) => console.warn(err),
+      complete: () => console.info('completed')
+    {{'}'}}
+  </p>
+  <section class="grid grid-cols-1 gap-4 md:grid-cols-2">
+    <p-card>
+      <h2 class="text-2xl">
+        GET
+      </h2>
+      <hr class="my-2">
+      <pre class="whitespace-pre-wrap max-w-[600px] mx-auto border-[1px] rounded-md border-gray-700 mb-3 mt-4">
+        <code>
+          ajax.get(url, {{'{'}}
+            'Content-type':'Application/json'
+          {{'}'}}).subscribe(this.observer)
+
+          //
+
+          ajax({{'{'}}
+            url: url,
+            method: 'GET',
+            headers: {{'{'}}
+              'Content-type':'Application/json'
+            {{'}'}},
+          {{'}'}}).subscribe(this.observer)
+        </code>
+      </pre>
+    </p-card>
+    <p-card>
+      <h2 class="text-2xl">
+        POST
+      </h2>
+      <hr class="my-2">
+      <pre class="whitespace-pre-wrap max-w-[600px] mx-auto border-[1px] rounded-md border-gray-700 mb-3 mt-4">
+        <code>
+          ajax.post(url, {{'{'}}
+            name: 'Juan David',
+            last_name: 'Osorio Ortiz',
+            age: '19'
+          {{'}'}}, {{'{'}}
+            'Content-type':'Application/json'
+          {{'}'}}).subscribe(this.observer)
+
+          //
+
+          ajax({{'{'}}
+            url: url,
+            method: 'POST',
+            headers: {{'{'}}
+              'Content-type':'Application/json'
+            {{'}'}},
+            body: {{'{'}}
+              name: 'Juan David',
+              last_name: 'Osorio Ortiz',
+              age: '19'
+            {{'}'}}
+          {{'}'}}).subscribe(this.observer)
+        </code>
+      </pre>
+    </p-card>
+    <p-card>
+      <h2 class="text-2xl">
+        PUT
+      </h2>
+      <hr class="my-2">
+      <pre class="whitespace-pre-wrap max-w-[600px] mx-auto border-[1px] rounded-md border-gray-700 mb-3 mt-4">
+        <code>
+          ajax.put(url, {{'{'}}
+            name: 'Juan David',
+            last_name: 'Osorio Ortiz',
+            age: '19'
+          {{'}'}}, {{'{'}}
+            'Content-type':'Application/json'
+          {{'}'}}).subscribe(this.observer)
+
+          //
+
+          ajax({{'{'}}
+            url: url,
+            method: 'PUT',
+            headers: {{'{'}}
+              'Content-type':'Application/json'
+            {{'}'}},
+            body: {{'{'}}
+              name: 'Juan David',
+              last_name: 'Osorio Ortiz',
+              age: '19'
+            {{'}'}}
+          {{'}'}}).subscribe(this.observer)
+        </code>
+      </pre>
+    </p-card>
+    <p-card>
+      <h2 class="text-2xl">
+        DELETE
+      </h2>
+      <hr class="my-2">
+      <pre class="whitespace-pre-wrap max-w-[600px] mx-auto border-[1px] rounded-md border-gray-700 mb-3 mt-4">
+        <code>
+          ajax.delete(url, {{'{'}}
+            'Content-type':'Application/json'
+          {{'}'}}).subscribe(this.observer)
+
+          //
+
+          ajax({{'{'}}
+            url: url,
+            method: 'DELETE',
+            headers: {{'{'}}
+              'Content-type':'Application/json'
+            {{'}'}}
+          {{'}'}}).subscribe(this.observer)
+        </code>
+      </pre>
+    </p-card>
+    <p-card>
+      <h2 class="text-2xl">
+        PATCH
+      </h2>
+      <hr class="my-2">
+      <pre class="whitespace-pre-wrap max-w-[600px] mx-auto border-[1px] rounded-md border-gray-700 mb-3 mt-4">
+        <code>
+          ajax.patch(url, {{'{'}}
+            name: 'Juan David',
+            last_name: 'Osorio Ortiz',
+            age: '19'
+          {{'}'}}, {{'{'}}
+            'Content-type':'Application/json'
+          {{'}'}}).subscribe(this.observer)
+
+          //
+
+          ajax({{'{'}}
+            url: url,
+            method: 'PATCH',
+            headers: {{'{'}}
+              'Content-type':'Application/json'
+            {{'}'}},
+            body: {{'{'}}
+              name: 'Juan David',
+              last_name: 'Osorio Ortiz',
+              age: '19'
+            {{'}'}}
+          {{'}'}}).subscribe(this.observer)
+        </code>
+      </pre>
+    </p-card>
+  </section>
+</section>

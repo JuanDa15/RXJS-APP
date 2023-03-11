@@ -173,6 +173,24 @@ export class AppComponent {
       ]
     },
     {
+      name: 'Ajax',
+      isOpen: false,
+      childs: [
+        {
+          name: 'Basic-concepts-ajax',
+          url: '/ajax/basic'
+        },
+        {
+          name: 'getJSON',
+          url: '/ajax/get-json'
+        },
+        {
+          name: 'POST, PUT, DELETE',
+          url: '/ajax/post-put-delete'
+        }
+      ]
+    },
+    {
       name: 'Labs',
       isOpen: false,
       childs: [

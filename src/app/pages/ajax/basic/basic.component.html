@@ -1,0 +1,121 @@
+<section class="w-full">
+  <h1 class="text-4xl mb-2 break-all">
+    Basic AJAX -
+    <code class="text-indigo-600"> fetch API, ajax RXJS </code>
+  </h1>
+  <hr class="mb-4" />
+  <section class="flex flex-col gap-4 md:grid md:grid-cols-2">
+    <p-card class="md:col-start-1 col-end-2 row-start-1">
+      <h2 class="text-2xl">
+        Fetch API
+      </h2>
+      <hr class="my-2">
+      <p>
+        El fetch API es el API nativa que ofrece javascript para hacer
+        peticiones AJAX, la cual es muy util pero tiene unos pros y contras que el ajax de rxjs trata de resolver.
+      </p>
+      <hr class="my-2">
+      <pre class="whitespace-pre-wrap max-w-[600px] mx-auto border-[1px] rounded-md border-gray-700 mb-3 mt-4">
+        <code>
+          // Ejemplo petición GET con fetch API
+          fetch(url)
+            .then(res => res.json())
+            .then(console.log)
+        </code>
+      </pre>
+      <h3 class="text-xl">
+        Respuesta del GET:
+      </h3>
+      <p>
+        En este objeto de respuesta, la información que devuelve el
+        servidor esta contenida en el atributo body, por lo que para
+        acceder a ella toca por medio de promesas como se ve en el ejemplo
+      </p>
+      <img src="/assets/images/fetch-api-response.png"
+           class="w-full max-w-[400px] mx-auto mt-4 rounded-md"
+           alt="fetch-rxjs-response" width="400px" height="183">
+    </p-card>
+    <p-card>
+      <h2 class="text-2xl">
+        Manejo de errores
+      </h2>
+      <hr class="my-2">
+      <p>
+        La complejidad debido al manejo de errores se debe a que primero se tiene que verificar el estado de la respuesta antes de seguir con cualquier tipo de logica, lo que agrega un poco más de lineas de codigo y complejidad.
+      </p>
+      <hr class="my-2">
+      <pre class="whitespace-pre-wrap max-w-[400px] mx-auto border-[1px] rounded-md border-gray-700 mb-3 mt-4">
+        <code>
+          fetch(url)
+            .then( this.errorsManagement )
+            .then(res => res.json())
+            .then(console.log)
+            .catch( err => console.warn(err))
+
+          public errorsManagement(resp: Response) {{'{'}}
+            if ( !resp.ok ){{'{'}}
+              throw(new Error(resp.statusText))
+            {{'}'}}
+            return resp;
+          {{'}'}}
+        </code>
+      </pre>
+    </p-card>
+    <p-card class="md:col-start-2 col-end-3 row-start-1">
+      <h2 class="text-2xl">
+        AJAX RXJS
+      </h2>
+      <hr class="my-2">
+      <p>
+        las peticiones de rxjs, facilitan mucho el hacer las peticiones ajax, la forma de hacer un get con el modulo de ajax de rxjs es el siguiente
+      </p>
+      <hr class="my-2">
+      <pre class="whitespace-pre-wrap max-w-[600px] mx-auto border-[1px] rounded-md border-gray-700 mb-3 mt-4">
+        <code>
+          ajax({{'{'}}
+            url: this.url,
+            method: 'GET'
+          {{'}'}}).pipe(
+            catchError(this.errorsManagementRxjs)
+          ).subscribe({{'{'}}
+            next: (val) => console.log('response',val)
+          {{'}'}})
+
+          public errorsManagementRxjs(
+            err: AjaxError
+          ): Observable < unknown > {{'{'}}
+            console.warn('error en:', err);
+            return of([])
+          {{'}'}}
+        </code>
+      </pre>
+      <h3 class="text-xl">
+        Respuesta del GET:
+      </h3>
+      <p>
+        En este objeto de respuesta, la información que devuelve el
+        servidor esta contenida en el atributo response, por lo que para este paso ya todo viene en un json sin necesidad de muchas promesas
+      </p>
+      <img src="/assets/images/ajax-rxjs-response.png"
+           class="w-full max-w-[400px] mx-auto mt-4 rounded-md"
+           alt="ajax-rxjs-response" width="400px" height="183">
+    </p-card>
+  </section>
+</section>
+<!--
+  Por otro lado tenemos las peticiones de rxjs, que facilitan mucho
+  el hacer las peticiones ajax, la forma de hacer un get con el modulo de ajax de rxjs es el siguiente
+
+    ajax({
+      url: this.url,
+    }).pipe(
+      catchError(this.errorsManagementRxjs)
+    ).subscribe({
+      next: (val) => console.log('response',val)
+    })
+
+      public errorsManagementRxjs(err: AjaxError): Observable<unknown> {
+    console.warn('error en:', err);
+    return of([])
+  }
+ -->

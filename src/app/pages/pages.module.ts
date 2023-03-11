@@ -33,6 +33,9 @@ import { ThrottleTimeComponent } from './time/throttle-time/throttle-time.compon
 import { SampleTimeComponent } from './time/sample-time/sample-time.component';
 import { SampleComponent } from './time/sample/sample.component';
 import { AuditTimeComponent } from './time/audit-time/audit-time.component';
+import { BasicComponent } from './ajax/basic/basic.component';
+import { GetJsonComponent } from './ajax/get-json/get-json.component';
+import { PostPutDeleteComponent } from './ajax/post-put-delete/post-put-delete.component';
 
 
 @NgModule({
@@ -67,7 +70,10 @@ import { AuditTimeComponent } from './time/audit-time/audit-time.component';
     ThrottleTimeComponent,
     SampleTimeComponent,
     SampleComponent,
-    AuditTimeComponent
+    AuditTimeComponent,
+    BasicComponent,
+    GetJsonComponent,
+    PostPutDeleteComponent
   ],
   imports: [
     CommonModule,

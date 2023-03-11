@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BasicComponent } from './pages/ajax/basic/basic.component';
+import { GetJsonComponent } from './pages/ajax/get-json/get-json.component';
+import { PostPutDeleteComponent } from './pages/ajax/post-put-delete/post-put-delete.component';
 import { ProgressBarComponent } from './pages/labs/progress-bar/progress-bar.component';
 import { DistincComponent } from './pages/not-common/distinc/distinc.component';
 import { DistinctUntilChangedComponent } from './pages/not-common/distinct-until-changed/distinct-until-changed.component';
@@ -201,6 +204,26 @@ const routes: Routes = [
         path: 'audit-time',
         component: AuditTimeComponent,
         title: 'audit time'
+      }
+    ]
+  },
+  {
+    path:'ajax',
+    children: [
+      {
+        path: 'basic',
+        component: BasicComponent,
+        title: 'ajax basic'
+      },
+      {
+        path: 'get-json',
+        component: GetJsonComponent,
+        title: 'get JSON'
+      },
+      {
+        path: 'post-put-delete',
+        component: PostPutDeleteComponent,
+        title: 'post-put-delete'
       }
     ]
   },

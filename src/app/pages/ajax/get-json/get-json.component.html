@@ -1,0 +1,63 @@
+<section class="w-full">
+  <h1 class="text-4xl mb-2 break-all">
+    AJAX RXJS -
+    <code class="text-indigo-600"> getJSON( url, headers ) </code>
+  </h1>
+  <hr class="mb-4" />
+  <section class="flex flex-col gap-4">
+    <p-card class="md:col-start-1 col-end-2 row-start-1">
+      <h2 class="text-2xl">
+        getJSON
+      </h2>
+      <hr class="my-2">
+      <p>
+        Dentro del paquete de ajax de rxjs, tambien se tiene un metodo que es getJSON, este metodo sirve para obtener directamente la respuesta de una petición, omite por completo la información de la respuesta como los estados, etc. Que a diferencia del AJAX si nos ofrece toda esta información.
+      </p>
+      <hr class="my-2">
+      <pre class="whitespace-pre-wrap max-w-[600px] mx-auto border-[1px] rounded-md border-gray-700 mb-3 mt-4">
+        <code>
+          public obs$ = ajax.getJSON(this.url, {{'{'}}
+            'Content-Type': 'application/json',
+            'my-authorization': 'fesjfoi-esfsef-fef'
+          {{'}'}});
+
+          this.obs$.subscribe({{'{'}}
+            next: (val) => console.log(val),
+            error: (err) => console.warn(err),
+            complete: () => console.info('completed')
+          {{'}'}}).
+        </code>
+      </pre>
+      <h3 class="text-xl">
+        Respuesta del getJSON:
+      </h3>
+      <p>
+        En este objeto de respuesta, la información que devuelve el
+        servidor esta contenida en el atributo body, por lo que para
+        acceder a ella toca por medio de promesas como se ve en el ejemplo
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2">
+        <picture class="text-center">
+          <img
+            src="/assets/images/ajax-normal.png"
+            class="w-full max-w-[500px] mx-auto mt-4 rounded-md min-h-[200px] object-contain"
+            alt="ajax-rxjs-normal"
+            width="500"
+            height="200"
+          />
+          <figcaption>AJAX RXJS response</figcaption>
+        </picture>
+        <picture class="text-center">
+          <img
+            src="/assets/images/getJSON-response.png"
+            class="w-full max-w-[500px] mx-auto mt-4 rounded-md min-h-[200px] object-contain"
+            alt="get-json-response"
+            width="500"
+            height="200"
+          />
+          <figcaption>getJSON response</figcaption>
+        </picture>
+      </div>
+    </p-card>
+  </section>
+</section>
