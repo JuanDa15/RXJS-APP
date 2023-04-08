@@ -1,6 +1,6 @@
 <section class="w-full">
   <h1 class="text-4xl mb-2 break-all">
-    fromEvent - 
+    fromEvent -
     <code class="text-indigo-600">fromEvent(target, eventName)</code>
   </h1>
   <hr class="mb-4">
@@ -24,7 +24,7 @@
       <div class="my-4">
         <p class="font-bold text-indigo-500">DATA STREAM: </p>
         <hr class="my-3">
-        <img class="w-full rounded-md" src="/assets/images/fromEvent.png" alt="fromEvent data stream">
+        <img class="w-full rounded-md" src="/assets/images/observables/fromEvent.png" alt="fromEvent data stream">
       </div>
     </p-card>
     <p-card>
@@ -37,7 +37,7 @@
       </p>
       <pre class="whitespace-pre-wrap my-4 border-[1px] rounded-md border-gray-700">
         <code>
-          < input type="text" id="inputTest" #inputTest>  
+          < input type="text" id="inputTest" #inputTest>
         </code>
       </pre>
       <p>
@@ -48,7 +48,7 @@
         <code>
           // Con viewChild
           @ViewChild('inputTest') input!: ElementRef< HTMLInputElement >;
-  
+
           // Con javascript vanilla
           public input = document.getElementById('inputTest')
         </code>
@@ -60,16 +60,16 @@
         <code>
           // Declaración del observable
           public src$: Observable< InputEvent > | null;
-  
-  
-          // Inicialización de la variable src$: Se inicializa en null ya que en las 
+
+
+          // Inicialización de la variable src$: Se inicializa en null ya que en las
           // ultimas versiones de Angular es necesario inicializar los atributos
           // según las reglas de linter que se esten usando;
           constructor() {{'{'}}
             this.src$ = null;
           {{'}'}}
-  
-  
+
+
           // Inicialización del observable
           ngAfterViewInit(): void {{'{'}}
             this.src$ = fromEvent< InputEvent >(this.input?.nativeElement, 'input');

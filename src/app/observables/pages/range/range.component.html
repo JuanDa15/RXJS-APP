@@ -1,6 +1,6 @@
 <section class="w-full">
   <h1 class="text-4xl mb-2 break-all">
-    range - 
+    range -
     <code class="text-indigo-600">range(start, emissionsQuantity)</code>
   </h1>
   <hr class="mb-4">
@@ -21,11 +21,11 @@
       <p>
         Una vez suscritos se empezara a emitir desde el primer parametro agregado <b>1</b>, y se emitira durante 5 veces
       </p>
-      <img src="assets/images/range.png" alt="ranga_stream" class="w-full rounded-md my-4">
+      <img src="assets/images/observables/range.png" alt="ranga_stream" class="w-full rounded-md my-4">
     </p-card>
     <p-card>
       En principio es síncrono pero atravez de un asyncScheduler se puede volver asíncrono
-  
+
       <h2 class="text-indigo-600 font-semibold mt-3">SINCRONO:</h2>
       <pre class="whitespace-pre-wrap border-[1px] rounded-md border-gray-700">
         <code>
@@ -49,13 +49,13 @@
       <div class="grid grid-cols-1 md:grid-cols-2 py-4 gap-4">
         <div class="flex flex-col relative">
           <label for="range-start" class="absolute text-indigo-600 top-[-14px] left-[6px] text-xs bg-slate-900 z-[1] p-[.3rem] font-semibold">
-            Range start: 
+            Range start:
           </label>
           <input class="bg-slate-900 border-[1px] border-indigo-600 py-[.3rem] px-[.6rem] rounded-sm" type="number" [formControl]="min" id="range-start">
         </div>
         <div class="flex flex-col relative">
           <label for="emissions_quantity" class="absolute text-indigo-600 top-[-14px] left-[6px] text-xs bg-slate-900 z-[1] p-[.3rem] font-semibold">
-            Emissions quantity: 
+            Emissions quantity:
           </label>
           <input class="bg-slate-900 border-[1px] border-indigo-600 py-[.3rem] px-[.6rem] rounded-sm" type="number" [formControl]="emissions" id="emissions_quantity">
         </div>
