@@ -1,0 +1,60 @@
+<section class="w-full">
+  <h1 class="text-4xl mb-2 break-all">
+    Switch Map - <code class="text-indigo-600">switchMap( project )</code>
+  </h1>
+  <hr class="mb-4" />
+  <section class="flex flex-col gap-4">
+    <p-card>
+      <p>
+        Es otro operador de aplanamiento que sirve para concatenar los observables resultantes que pueden fluir a travez de ese operador, a diferencia de los otros operadores que se suscriben directamente a cada valor emitido
+        este lo que hace es que todos los valores recibidos los pone en una cola,
+        y hasta que el observador que se esta ejecutando no se complete, no se suscribira a
+        ningun otro valor
+      </p>
+      <img
+        src="/assets/images/concat-map.png"
+        class="w-full max-w-[600px] mx-auto mt-4 rounded-md"
+        alt="filter"
+        width="600px"
+        height="183"
+      />
+    </p-card>
+    <p-card>
+      <h2 class="text-2xl text-indigo-500 font-semibold mb-3">
+        USO DEL CONCATMAP
+      </h2>
+      <pre
+        class="whitespace-pre-wrap md:whitespace-pre-normal max-w-[800px] mx-auto border-[1px] rounded-md border-gray-700 mb-3 p-1 break-all"
+      >
+        <code>
+          public interval$ = interval(500).pipe(take(3));
+          public click$ = fromEvent(document, 'click');
+
+          this.click$.pipe(
+            concatMap( () => this.interval$ )
+          ).subscribe({{'{'}}
+            next: (val) => {{'{'}}
+              console.log(val)
+            {{'}'}},
+            complete: () => {{'{'}}
+              console.log('completed')
+            {{'}'}}
+          {{'}'}})
+        </code>
+      </pre>
+    </p-card>
+    <p-card>
+      <h2 class="text-2xl text-indigo-500 font-semibold mb-3">
+        EJEMPLO
+      </h2>
+      <div class="w-full h-[200px] bg-slate-700 rounded-md flex justify-center items-center font-semibold text-2xl text-slate-600" #clickArea>
+        CLICK EN EL RECUADRO...
+      </div>
+      <ul class="grid grid-cols-1 md:grid-cols-2 gap-1">
+        <li *ngFor="let item of emisions">
+          {{item}}
+        </li>
+      </ul>
+    </p-card>
+  </section>
+</section>

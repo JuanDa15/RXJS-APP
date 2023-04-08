@@ -1,0 +1,70 @@
+<section class="w-full">
+  <h1 class="text-4xl mb-2 break-all">
+    Exhaust Map - <code class="text-indigo-600">exhaustMap( project )</code>
+  </h1>
+  <hr class="mb-4" />
+  <section class="flex flex-col gap-4">
+    <p-card>
+      <p>
+        Es otro operador de aplanamiento, recibe un observable y maneja la subscripcion internamente , lo que lo diferencia de los demas operadores es que si internamente ya hay una subscripción a un observable, no va a concatenar, ni meter en cola, ni subscribirse a otro observable hasta que la subscripción interna no se haya completado
+      </p>
+      <img
+        src="/assets/images/exhaust-map.png"
+        class="w-full max-w-[600px] mx-auto mt-4 rounded-md"
+        alt="filter"
+        width="600px"
+        height="183"
+      />
+    </p-card>
+    <p-card>
+      <h2 class="text-2xl text-indigo-500 font-semibold mb-3">
+        USO DEL EXHAUSTMAP
+      </h2>
+      <pre
+        class="whitespace-pre-wrap md:whitespace-pre-normal max-w-[800px] mx-auto border-[1px] rounded-md border-gray-700 mb-3 p-1 break-all"
+      >
+        <code>
+          public interval$ = interval(500).pipe(take(3));
+          public click$ = fromEvent(document, 'click');
+
+          this.click$.pipe(
+            exhaustMap( () => this.interval$ )
+          ).subscribe({{'{'}}
+            next: (val) => {{'{'}}
+              console.log(val)
+            {{'}'}},
+            complete: () => {{'{'}}
+              console.log('completed')
+            {{'}'}}
+          {{'}'}})
+        </code>
+      </pre>
+    </p-card>
+    <p-card>
+      <h2 class="text-2xl text-indigo-500 font-semibold mb-3">
+        EJEMPLO
+      </h2>
+      <div class="w-full h-[200px] bg-slate-700 rounded-md flex justify-center items-center font-semibold text-2xl text-slate-600" #clickArea>
+        CLICK EN EL RECUADRO...
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-1">
+        <div>
+          <h3>ConcatMap</h3>
+          <p *ngFor="let item of emisionsConcat">
+            {{item}}
+          </p>
+        </div>
+        <div>
+          <h3>ExhaustMap</h3>
+          <p *ngFor="let item of emisionsExhaust">
+            {{item}}
+          </p>
+        </div>
+      </div>
+    </p-card>
+  </section>
+</section>
+<!--
+
+  Es otro operador de aplanamiento, recibe un observable y maneja la subscripcion internamente , lo que lo diferencia de los demas operadores es que si internamente ya hay una subscripción a un observable, no va a concatenar, ni meter en cola, ni subscribirse a otro observable hasta que la subscripción interna no se haya completado
+ -->

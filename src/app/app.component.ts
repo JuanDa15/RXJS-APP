@@ -191,12 +191,72 @@ export class AppComponent {
       ]
     },
     {
+      name: 'Operadores de transformación',
+      isOpen: false,
+      childs: [
+        {
+          name: 'Merge-all',
+          url: '/transformation/merge-all'
+        },
+        {
+          name: 'Merge-map',
+          url: '/transformation/merge-map'
+        },
+        {
+          name: 'Switch-map',
+          url: '/transformation/switch-map'
+        },
+        {
+          name: 'Concat-map',
+          url: '/transformation/concat-map'
+        },
+        {
+          name: 'Exhaust-map',
+          url: '/transformation/exhaust-map'
+        }
+      ]
+    },
+    {
+      name: 'Operadores de combinación',
+      isOpen: false,
+      childs: [
+        {
+          name: 'Start-with',
+          url: '/combination/start-with'
+        },
+        {
+          name: 'End-with',
+          url: '/combination/end-with'
+        },
+        {
+          name: 'Concat',
+          url: '/combination/concat'
+        },
+        {
+          name: 'Merge',
+          url: '/combination/merge'
+        },
+        {
+          name: 'Combine-latest',
+          url: '/combination/combine-latest'
+        },
+        {
+          name: 'Fork-join',
+          url: '/combination/fork-join'
+        }
+      ]
+    },
+    {
       name: 'Labs',
       isOpen: false,
       childs: [
         {
           name: 'Progress-bar',
           url: '/labs/progress-bar'
+        },
+        {
+          name: 'Start-with-lab',
+          url: '/labs/start-with-lab'
         }
       ]
     }

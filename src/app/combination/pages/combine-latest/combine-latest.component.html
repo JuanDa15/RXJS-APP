@@ -1,0 +1,64 @@
+<section class="w-full">
+  <h1 class="text-4xl mb-2 break-all">
+    CombineLatest -
+    <code class="text-indigo-600">combineLatest( [Obs$, Obs$] )</code>
+  </h1>
+  <hr class="mb-4" />
+  <section class="flex flex-col gap-4">
+    <p-card>
+      <p>
+        La funcion combineLatest recibe un arreglo de observables, esta función
+        va a emitir valores solamente hasta el momento que todos los observables
+        emitan un valor, si en algun caso uno de los observables nunca emite
+        nada, el combine latest nunca emitira nada
+      </p>
+      <p class="text-red-700">
+        <b>Importante: </b> Este se completara solo cuando todas las
+        subscripciones internas se hayan completado
+      </p>
+      <img
+        src="/assets/images/combine-latest.png"
+        class="w-full max-w-[600px] mx-auto mt-4 rounded-md"
+        alt="combine-latest"
+        width="600px"
+        height="183"
+      />
+    </p-card>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <p-card>
+        <h2 class="text-2xl text-indigo-500 font-semibold mb-3">
+          USO DEL MERGE
+        </h2>
+        <pre
+          class="whitespace-pre-wrap md:whitespace-pre-normal max-w-[800px] mx-auto border-[1px] rounded-md border-gray-700 mb-3 p-1 break-all"
+        >
+          <code>
+            // timerOne emits first value at 1s, then once every 4s
+            const timerOne$ = timer(1000, 4000);
+            // timerTwo emits first value at 2s, then once every 4s
+            const timerTwo$ = timer(2000, 4000);
+            // timerThree emits first value at 3s, then once every 4s
+            const timerThree$ = timer(3000, 4000);
+
+            // when one timer emits, emit the latest values from each timer as an array
+            combineLatest([timerOne$, timerTwo$, timerThree$]).subscribe(
+              ([timerValOne, timerValTwo, timerValThree]) => {{'{'}}
+                console.log(timerValOne, timerValTwo, timerValThree);
+              {{'}'}}
+            );
+          </code>
+        </pre>
+      </p-card>
+      <p-card>
+        <h2 class="text-2xl text-indigo-500 font-semibold mb-3">
+          EJEMPLO
+        </h2>
+        <ul>
+          <li *ngFor="let item of emissions">
+            {{item}}
+          </li>
+        </ul>
+      </p-card>
+    </div>
+  </section>
+</section>

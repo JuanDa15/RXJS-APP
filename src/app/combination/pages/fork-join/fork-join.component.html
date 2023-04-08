@@ -1,0 +1,122 @@
+<section class="w-full">
+  <h1 class="text-4xl mb-2 break-all">
+    ForkJoin -
+    <code class="text-indigo-600">forkJoin( [Obs$, Obs$] )</code>
+  </h1>
+  <hr class="mb-4" />
+  <section class="flex flex-col gap-4">
+    <p-card>
+      <p>
+        La funcion forkJoin puede recibir varios observables, la caracteristica
+        más diferencial es que todos los observables tienen que ser finitos para
+        poder que se emita un valor, ya que lo que hace este operador es que
+        cuando todos los observables se hayan completado devuelve por defecto un
+        arreglo, pero con una configuración se puede volver un json con todas
+        las respuestas
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <h2 class="my-2 text-2xl">
+            Configuración para retornar un diccionario:
+          </h2>
+          <pre
+            class="whitespace-pre-wrap md:whitespace-pre-normal max-w-[800px] mx-auto border-[1px] rounded-md border-gray-700 mb-3 p-1 break-all"
+          >
+              <code>
+                forkJoin({{'{'}}
+                  google: ....
+                  microsoft: ...
+                  users: ....
+                {{'}'}})
+              </code>
+            </pre>
+        </div>
+        <div>
+          <h2 class="my-2 text-2xl">Configuración para retornar un array:</h2>
+          <pre
+            class="whitespace-pre-wrap md:whitespace-pre-normal max-w-[800px] mx-auto border-[1px] rounded-md border-gray-700 mb-3 p-1 break-all"
+          >
+                <code>
+                  forkJoin([
+                    obs$,
+                    obs$,
+                    obs$
+                  ])
+                </code>
+              </pre>
+        </div>
+      </div>
+      <img
+        src="/assets/images/fork-join.png"
+        class="w-full max-w-[600px] mx-auto mt-4 rounded-md"
+        alt="fork-join"
+        width="600px"
+        height="183"
+      />
+    </p-card>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <p-card>
+        <h2 class="text-2xl text-indigo-500 font-semibold mb-3">
+          USO DEL MERGE
+        </h2>
+        <pre
+          class="whitespace-pre-wrap md:whitespace-pre-normal max-w-[800px] mx-auto border-[1px] rounded-md border-gray-700 mb-3 p-1 break-all"
+        >
+          <code>
+            /*
+              when all observables complete, provide the last
+              emitted value from each as dictionary
+            */
+            forkJoin(
+              // as of RxJS 6.5+ we can use a dictionary of sources
+              {{'{'}}
+                google: ajax.getJSON('https://api.github.com/users/google'),
+                microsoft: ajax.getJSON('https://api.github.com/users/microsoft'),
+                users: ajax.getJSON('https://api.github.com/users')
+              {{'}'}}
+            ).subscribe(console.log)
+            // {{'{'}} google: object, microsoft: object, users: array {{'}'}}
+          </code>
+        </pre>
+      </p-card>
+      <p-card>
+        <h2 class="text-2xl text-indigo-500 font-semibold mb-3">
+          EJEMPLO
+        </h2>
+        <ol *ngIf="emissions !== null" class="p-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <li class="border-2 rounded-md p-2">
+            <a [href]="emissions.google.url" target="_blank" class="text-center">
+              <img
+                [src]="emissions.google.avatar_url"
+                [alt]="emissions.google.id"
+                class="aspect-square w-[200px] rounded-full mx-auto"
+              />
+              <p>Username: {{ emissions.google.login }}</p>
+            </a>
+          </li>
+          <li class="border-2 rounded-md p-2">
+            <a [href]="emissions.microsoft.url" target="_blank" class="text-center">
+              <img
+                [src]="emissions.microsoft.avatar_url"
+                [alt]="emissions.microsoft.id"
+                class="aspect-square w-[200px] rounded-full mx-auto"
+              />
+              <p>Username: {{ emissions.microsoft.login }}</p>
+            </a>
+          </li>
+          <li class="border-2 rounded-md p-2"
+              *ngFor="let item of emissions.users">
+            <a [href]="item.html_url" target="_blank" class="text-center">
+              <img
+                [src]="item.avatar_url"
+                [alt]="item.id"
+                class="aspect-square w-[200px] rounded-full mx-auto"
+              />
+              <p>Username: {{item.login }}</p>
+            </a>
+          </li>
+        </ol>
+      </p-card>
+    </div>
+  </section>
+</section>

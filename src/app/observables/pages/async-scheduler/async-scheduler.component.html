@@ -1,0 +1,119 @@
+<section class="w-full">
+  <h1 class="text-4xl mb-2 break-all">
+    asyncScheduler -
+    <code class="text-indigo-600">asyncScheduler</code>
+  </h1>
+  <hr class="mb-4">
+  <div class="grid gap-4 grid-cols-1 md:grid-cols-2">
+    <p-card class="col-span-1 md:col-span-1">
+      <h2 class="text-2xl font-semibold">Definición</h2>
+      <ul class="list-inside list-disc">
+        <li>No crea un observable, crea una subscripción</li>
+        <li>Es el equivalente al setTimeOut, setInterval nativo de js, ya que con esta función se pueden realizar ambas cosas pero con algo más de control.</li>
+      </ul>
+    </p-card>
+    <p-card class="col-span-1 md:col-start-2">
+      <pre class="whitespace-pre-wrap my-4 border-[1px] rounded-md border-gray-700">
+        <code>
+          asyncScheduler.schedule( task, delay, state);
+
+          task: action to execute
+          delay: time to start the task
+          state: param to execute in the task
+        </code>
+      </pre>
+    </p-card>
+    <p-card class="col-span-full">
+      <p>
+        En este caso esta va a ser la tarea que se va a ejecutar, para simular el TIMEOUT, INTERVAL:
+      </p>
+      <pre class="whitespace-pre-wrap my-4 border-[1px] rounded-md border-gray-700">
+        <code>
+          // TASK
+          const saludar = (param) => {{'{'}}
+            console.log(`hello ${{'{'}}param{{'}'}}`)
+          {{'}'}}
+        </code>
+      </pre>
+      <div>
+        <h3 class="text-xl">
+          TIMEOUT
+        </h3>
+        <hr class="my-2">
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <li>
+            Puede recibir un simple parametro como una cadena
+            <pre class="whitespace-pre-wrap my-4 border-[1px] rounded-md border-gray-700 h-[170px]">
+              <code>
+                asyncScheduler.schedule( task, 100, 'carlos');
+              </code>
+            </pre>
+          </li>
+          <li>
+              Si se necesitan multiples parametros se tiene que enviar en forma de objeto
+              <pre class="whitespace-pre-wrap my-4 border-[1px] rounded-md border-gray-700 h-[170px]">
+                <code>
+                  asyncScheduler.schedule( task, 100, {{'{'}}
+                    name: 'fernando',
+                    age: 35
+                  {{'}'}});
+                </code>
+              </pre>
+            </li>
+        </ul>
+        <pre class="whitespace-pre-wrap my-4 border-[1px] rounded-md border-gray-700">
+          <code>
+            // EJEMPLO:
+            asyncScheduler.schedule(() => saludar('juan david'), 2000)
+          </code>
+        </pre>
+        <div>
+          <p class="my-1">Ingrese un nombre: </p>
+          <input type="text" [formControl]="name" class="w-full px-2 py-2 rounded-sm bg-slate-800">
+          <p *ngIf="timeOutResponse">
+            Response: <span class="text-orange-600 font-semibold">{{timeOutResponse}}</span>
+          </p>
+          <button class="my-2 bg-indigo-600 p-2 rounded-md hover:bg-indigo-900"
+                  [disabled]="name.value === null"
+                  (click)="executeTimeout( name.value )">
+            Execute timeout
+          </button>
+        </div>
+      </div>
+      <hr class="my-4">
+      <div>
+        <h3 class="text-xl">
+          INTERVAL
+        </h3>
+        <hr class="my-2">
+        <p>
+          La tarea no puede ser una arrow function ya que se necesita tener referencia al this interno de la función
+        </p>
+        <pre class="whitespace-pre-wrap my-4 border-[1px] rounded-md border-gray-700">
+          <code>
+            // EJEMPLO:
+            this.subs = asyncScheduler.schedule( funtion(state){{'{'}}
+              console.log('state', state)
+              this.schedule(state + 1, 1000)
+            {{'}'}}, 3000, 0);
+
+            // Para cancelar el scheduler se necesita la referencia a la subscripción
+
+            this.subs.unsubscribe();
+          </code>
+        </pre>
+        <div>
+          <button class="my-2 bg-indigo-600 p-2 rounded-md hover:bg-indigo-900"
+                  (click)="executeInterval( )">
+            Execute Interval
+          </button>
+          <ul *ngIf="intervalResponse.length > 0">
+            <li *ngFor="let item of intervalResponse">
+              {{item}}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </p-card>
+  </div>
+</section>
